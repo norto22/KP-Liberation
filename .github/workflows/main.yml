@@ -10,10 +10,11 @@ jobs:
   artifacts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
 
-      - uses: docker://node:10-alpine
-        name: Setup Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - name: Install dependencies
         working-directory: _tools
@@ -23,8 +24,38 @@ jobs:
         working-directory: _tools
         run: npx gulp
 
-      - uses: actions/upload-artifact@master
+      - uses: actions/upload-artifact@v4
         with:
           name: PBO-Files
           path: _tools/build/pbo
 
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install check tooling
+        run: pip install -r tools/requirements.txt
+
+      - name: Tooling unit tests
+        run: |
+          pip install pytest
+          python -m pytest tools/tests -q
+
+      - name: SQF syntax lint (baseline-gated)
+        run: python tools/sqf_lint.py
+
+      - name: Reference integrity
+        run: python tools/refcheck.py
+
+      - name: Namespace key inventory (non-gating artifact)
+        run: python tools/namespace_keys.py --json tools/namespace_keys.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: namespace-keys
+          path: tools/namespace_keys.json

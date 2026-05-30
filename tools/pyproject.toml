@@ -1,0 +1,20 @@
+# Config for the KP Liberation Python dev/CI checks (this `tools/` dir).
+# Distinct from `_tools/` (the Node mission build). See tools/README.md.
+
+[tool.basedpyright]
+# "standard" is the right bar for small CLI checks: it keeps real type errors
+# while dropping the pedantic strict-only diagnostics (reportAny on argparse
+# Namespaces, reportUnusedCallResult on add_argument, etc.).
+typeCheckingMode = "standard"
+include = ["."]
+exclude = ["tests"]
+# Modules live flat in tools/; let the analyzer resolve `import sqf_lint` etc.
+extraPaths = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

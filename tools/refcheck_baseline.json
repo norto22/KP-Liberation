@@ -1,0 +1,12 @@
+[
+  {
+    "category": "reference",
+    "source": "scripts/client/misc/kp_fuel_consumption.sqf",
+    "ref": "scripts\\kp_fuel_consumption.sqf"
+  },
+  {
+    "category": "reference",
+    "source": "scripts/fob_templates/export_template.sqf",
+    "ref": "export_template.sqf"
+  }
+]
