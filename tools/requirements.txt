@@ -1,0 +1,3 @@
+# Python dev/CI check tooling for KP Liberation (see tools/README.md).
+# Pinned for reproducible CI runs.
+sqflint==0.3.2

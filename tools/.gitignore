@@ -1,0 +1,10 @@
+# Generated, non-gating output — regenerate with:
+#   python tools/namespace_keys.py --json tools/namespace_keys.json
+namespace_keys.json
+
+# Python caches
+__pycache__/
+.pytest_cache/
+
+# NOTE: the gating baselines (sqf_lint_baseline.txt, refcheck_baseline.json)
+# are intentionally committed.
