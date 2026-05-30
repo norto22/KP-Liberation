@@ -39,23 +39,31 @@ jobs:
           python-version: "3.12"
 
       - name: Install check tooling
-        run: pip install -r tools/requirements.txt
-
-      - name: Tooling unit tests
         run: |
+          pip install -r tools/requirements.txt
           pip install pytest
-          python -m pytest tools/tests -q
+
+      # Every check runs even if an earlier one fails (!cancelled()), so a single
+      # CI run surfaces ALL issues, not just the first. The job still goes red if
+      # any step failed.
+      - name: Tooling unit tests
+        if: ${{ !cancelled() }}
+        run: python -m pytest tools/tests -q
 
       - name: SQF syntax lint (baseline-gated)
+        if: ${{ !cancelled() }}
         run: python tools/sqf_lint.py
 
       - name: Reference integrity
+        if: ${{ !cancelled() }}
         run: python tools/refcheck.py
 
       - name: Namespace key inventory (non-gating artifact)
+        if: ${{ !cancelled() }}
         run: python tools/namespace_keys.py --json tools/namespace_keys.json
 
       - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
           name: namespace-keys
           path: tools/namespace_keys.json
