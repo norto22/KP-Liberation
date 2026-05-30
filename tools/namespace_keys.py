@@ -12,6 +12,7 @@ but no readers — or vice-versa — is the signal that a rename was half-applie
 
 Informational only — never gates CI.
 """
+
 # argparse Namespaces are dynamically typed and add_argument() returns an unused Action.
 # pyright: reportAny=false, reportUnusedCallResult=false
 from __future__ import annotations
@@ -24,7 +25,7 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 _DEFAULT_ROOT = _REPO_ROOT / "Missionframework"
 
-MISSION_PREFIXES = ("GREUH_", "GRLIB_", "KP_liberation_", "KPLIB_", "kp_liberation_")
+MISSION_PREFIXES = ("KPLIB_",)
 
 # Negative lookbehind so 'setVariable'/'getVariable' inside a larger identifier
 # (e.g. a hypothetical 'mysetVariable') is not captured. getVariable has both a
@@ -61,10 +62,18 @@ def build_inventory(root: Path) -> dict[str, dict[str, str | list[str]]]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="KP Liberation namespace-key inventory.")
-    parser.add_argument("--root", type=Path, default=_DEFAULT_ROOT,
-                        help="Mission framework root (default: Missionframework/).")
-    parser.add_argument("--json", type=Path, default=None,
-                        help="Write the inventory JSON here (default: also print to stdout).")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=_DEFAULT_ROOT,
+        help="Mission framework root (default: Missionframework/).",
+    )
+    parser.add_argument(
+        "--json",
+        type=Path,
+        default=None,
+        help="Write the inventory JSON here (default: also print to stdout).",
+    )
     args = parser.parse_args(argv)
 
     inventory = build_inventory(args.root)

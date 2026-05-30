@@ -1,0 +1,58 @@
+/*
+    KPLIB_fnc_postInit
+
+    File: fn_postInit.sqf
+    Author: Wyqer - https://github.com/KillahPotatoes
+    Date: 2017-08-31
+    Last Update: 2020-04-17
+    License: GNU General Public License v3.0 - https://www.gnu.org/licenses/gpl-3.0.html
+
+    Description:
+        The postInit function of a module takes care of starting/executing the modules functions or scripts.
+        Basically it starts/initializes the module functionality to make all provided features usable.
+
+    Parameter(s):
+        NONE
+
+    Returns:
+        Module postInit finished [BOOL]
+*/
+
+if (!KPLIB_CBA) exitWith {["CBA not loaded. Aborting initialization!"] call BIS_fnc_error; false};
+
+// Player section
+if (hasInterface) then {
+    // Load settings, if available
+    private _settings = profileNamespace getVariable ["KPLIB_Settings", []];
+    if !(_settings isEqualTo []) then {
+        KPLIB_viewFoot = _settings select 0;
+        KPLIB_viewVeh = _settings select 1;
+        KPLIB_viewAir = _settings select 2;
+        KPLIB_terrain = _settings select 3;
+        KPLIB_tpv = _settings select 4;
+        KPLIB_radio = _settings select 5;
+        KPLIB_soundVeh = _settings select 6;
+    };
+
+    // Add event handler
+    player addEventHandler ["GetInMan", {[] call KPLIB_fnc_getInOut}];
+    player addEventHandler ["GetOutMan", {[] call KPLIB_fnc_getInOut}];
+
+    // Action to open the dialog
+    private _actionArray = [
+        "<t color='#FF8000'>" + localize "STR_KPLIB_ACTIONOPEN" + "</t>",
+        {[] call KPLIB_fnc_openDialog;},
+        nil,
+        -1000,
+        false,
+        true,
+        "",
+        '_target isEqualTo _originalTarget'
+    ];
+    [_actionArray] call CBA_fnc_addPlayerAction;
+
+    // Apply default/loaded values
+    [] call KPLIB_fnc_apply;
+};
+
+true

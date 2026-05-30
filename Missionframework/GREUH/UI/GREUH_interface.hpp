@@ -159,23 +159,23 @@ class RscCombo {
 	};
 };
 
-class GREUH_Menu {
+class KPLIB_Menu {
 	idd = 5565;
 	movingEnable = false;
 	controlsBackground[] = {};
-	controls[] = {"GREUH_OuterBG", "BgPicture", "GREUH_OuterBG_F","GREUH_InnerBG", "GREUH_InnerBG_F","GREUH_Header","GREUH_SquadLabel",
-	"GREUH_SquadZone","GREUH_PlatoonLabel","GREUH_ViewDistance","GREUH_WorldQuality",
-	"GREUH_Close","GREUH_ButtonWorldVeryLow","GREUH_ButtonWorldLow","GREUH_ButtonWorldNormal","GREUH_ButtonWorldHigh",
-	"GREUH_Slider","GREUH_SliderVD","GREUH_LabelMarkers","GREUH_TeammatesYes","GREUH_TeammatesNo","GREUH_LabelPlatoon",
-	"GREUH_PlatoonYes","GREUH_PlatoonNo","GREUH_LabelPlatoonActive","GREUH_LabelMarkersActive","GREUH_SquadList",
-	"GREUH_ButtonJoin","GREUH_ButtonNew","GREUH_ButtonRename","GREUH_PlatoonZone","GREUH_ViewZone","GREUH_WorldZone",
-	"GREUH_MarkersZone","GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F","GREUH_Squad_InnerBG_F",
-	"GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField","GREUH_LabelVD","GREUH_ButtonLeader",
-	"GREUH_SliderVeh","GREUH_LabelVDVeh","GREUH_SliderVDVeh","GREUH_SliderObj","GREUH_LabelVDObj","GREUH_SliderVDObj",
-	"GREUH_Leader_OuterBG", "GREUH_Leader_InnerBG", "GREUH_Leader_OuterBG_F", "GREUH_Leader_InnerBG_F",
-	"GREUH_ButtonLeader_Choose", "GREUH_ButtonLeader_Abort", "GREUH_Squad_Combo", "GREUH_VehSound", "GREUH_SliderVehSound",
-	"GREUH_LabelVehSound","GREUH_LabelNametags","GREUH_NametagsActive","GREUH_NametagsYes","GREUH_NametagsNo",
-	"GREUH_FPSLabel","GREUH_FPSEdit"};
+	controls[] = {"KPLIB_OuterBG", "BgPicture", "KPLIB_OuterBG_F","KPLIB_InnerBG", "KPLIB_InnerBG_F","KPLIB_Header","KPLIB_SquadLabel",
+	"KPLIB_SquadZone","KPLIB_PlatoonLabel","KPLIB_ViewDistance","KPLIB_WorldQuality",
+	"KPLIB_Close","KPLIB_ButtonWorldVeryLow","KPLIB_ButtonWorldLow","KPLIB_ButtonWorldNormal","KPLIB_ButtonWorldHigh",
+	"KPLIB_Slider","KPLIB_SliderVD","KPLIB_LabelMarkers","KPLIB_TeammatesYes","KPLIB_TeammatesNo","KPLIB_LabelPlatoon",
+	"KPLIB_PlatoonYes","KPLIB_PlatoonNo","KPLIB_LabelPlatoonActive","KPLIB_LabelMarkersActive","KPLIB_SquadList",
+	"KPLIB_ButtonJoin","KPLIB_ButtonNew","KPLIB_ButtonRename","KPLIB_PlatoonZone","KPLIB_ViewZone","KPLIB_WorldZone",
+	"KPLIB_MarkersZone","KPLIB_Squad_OuterBG","KPLIB_Squad_InnerBG","KPLIB_Squad_OuterBG_F","KPLIB_Squad_InnerBG_F",
+	"KPLIB_ButtonName_Rename","KPLIB_ButtonName_Abort","KPLIB_Squad_TextField","KPLIB_LabelVD","KPLIB_ButtonLeader",
+	"KPLIB_SliderVeh","KPLIB_LabelVDVeh","KPLIB_SliderVDVeh","KPLIB_SliderObj","KPLIB_LabelVDObj","KPLIB_SliderVDObj",
+	"KPLIB_Leader_OuterBG", "KPLIB_Leader_InnerBG", "KPLIB_Leader_OuterBG_F", "KPLIB_Leader_InnerBG_F",
+	"KPLIB_ButtonLeader_Choose", "KPLIB_ButtonLeader_Abort", "KPLIB_Squad_Combo", "KPLIB_VehSound", "KPLIB_SliderVehSound",
+	"KPLIB_LabelVehSound","KPLIB_LabelNametags","KPLIB_NametagsActive","KPLIB_NametagsYes","KPLIB_NametagsNo",
+	"KPLIB_FPSLabel","KPLIB_FPSEdit"};
 	objects[] = {};
 
 	class BgPicture {
@@ -194,7 +194,7 @@ class GREUH_Menu {
 		h = (0.79 * safezoneH) + (6 * BORDERSIZE);
 	};
 
-	class GREUH_OuterBG {
+	class KPLIB_OuterBG {
 		idc = -1;
 		type =  CT_STATIC;
 		style = ST_SINGLE;
@@ -208,20 +208,20 @@ class GREUH_Menu {
 		h = (0.79 * safezoneH) + (6 * BORDERSIZE);
 		text = "";
 	};
-	class GREUH_OuterBG_F : GREUH_OuterBG {
+	class KPLIB_OuterBG_F : KPLIB_OuterBG {
 		style = ST_FRAME;
 	};
-	class GREUH_InnerBG : GREUH_OuterBG {
+	class KPLIB_InnerBG : KPLIB_OuterBG {
 		colorBackground[] = COLOR_GREEN;
 		x = (0.15 * safezoneW + safezoneX)  - ( BORDERSIZE);
 		y = ((BASE_Y + 0.07) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
 		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
 		h = 0.74 * safezoneH  + (3 * BORDERSIZE);
 	};
-	class GREUH_InnerBG_F : GREUH_InnerBG {
+	class KPLIB_InnerBG_F : KPLIB_InnerBG {
 		style = ST_FRAME;
 	};
-	class GREUH_StdText {
+	class KPLIB_StdText {
 		idc = -1;
 		type =  CT_STATIC;
 		style = ST_LEFT;
@@ -231,19 +231,19 @@ class GREUH_Menu {
 		sizeEx = 0.02 * safezoneH;
 		shadow = 2;
 	};
-	class GREUH_StdHeader : GREUH_StdText {
+	class KPLIB_StdHeader : KPLIB_StdText {
 		style = ST_CENTER;
 		sizeEx = 0.03 * safezoneH;
 	};
-	class GREUH_Header : GREUH_StdHeader {
+	class KPLIB_Header : KPLIB_StdHeader {
 		x = 0.15 * safezoneW + safezoneX - (BORDERSIZE);
 		y = ((BASE_Y + 0.01) * safezoneH) + safezoneY;
 		w = 0.2 * safezoneW + ( 2 * BORDERSIZE);
 		h = 0.05 * safezoneH - (BORDERSIZE);
-		text = $STR_GREUH_EXTENDED_OPTIONS;
+		text = $STR_KPLIB_GREUH_EXTENDED_OPTIONS;
 		colorBackground[] = COLOR_LIGHTGRAY;
 	};
-	class GREUH_ButtonGeneric {
+	class KPLIB_ButtonGeneric {
 		idc = -1;
 		type = CT_BUTTON;
 		style = ST_CENTER;
@@ -273,7 +273,7 @@ class GREUH_Menu {
 		action = "";
 		shadow = 1;
 	};
-	class GREUH_Label : GREUH_StdHeader {
+	class KPLIB_Label : KPLIB_StdHeader {
 		x = 0.15 * safezoneW + safezoneX;
 		w = 0.2 * safezoneW;
 		h = 0.03 * safezoneH;
@@ -281,19 +281,19 @@ class GREUH_Menu {
 		colorBackground[] = COLOR_LIGHTGREEN;
 	};
 
-	class GREUH_DefaultZone : GREUH_StdText {
+	class KPLIB_DefaultZone : KPLIB_StdText {
 		style = ST_CENTER;
 		x = 0.15 * safezoneW + safezoneX;
 		w = 0.2 * safezoneW;
 		colorText[] = COLOR_LIGHTGRAY;
 		colorBackground[] = COLOR_RED_DISABLED;
-		text = $STR_GREUH_DISABLED;
+		text = $STR_KPLIB_GREUH_DISABLED;
 	};
-	class GREUH_RegularLabel : GREUH_Label {
+	class KPLIB_RegularLabel : KPLIB_Label {
 		colorBackground[] = COLOR_NOALPHA;
 		style = ST_LEFT;
 	};
-	class GREUH_Close : GREUH_ButtonGeneric {
+	class KPLIB_Close : KPLIB_ButtonGeneric {
 		idc = 6677;
 		x = 0.335 * safezoneW + safezoneX;
 		w = 0.015 * safezoneW;  h = 0.02 * safezoneH;
@@ -301,52 +301,52 @@ class GREUH_Menu {
 		text = "X";
 		action = "closeDialog 0";
 	};
-	class GREUH_SquadZone : GREUH_DefaultZone {
+	class KPLIB_SquadZone : KPLIB_DefaultZone {
 		idc = 501;
 		y = ((BASE_Y + 0.11) * safezoneH) + safezoneY;
 		h = (0.2 * safezoneH) - (2 * BORDERSIZE);
 	};
-	class GREUH_SquadLabel : GREUH_Label {
+	class KPLIB_SquadLabel : KPLIB_Label {
 		idc = 510;
 		y = ((BASE_Y + 0.07) * safezoneH) + safezoneY;
-		text = $STR_GREUH_SQUAD_MANAGEMENT;
+		text = $STR_KPLIB_GREUH_SQUAD_MANAGEMENT;
 	};
-	class GREUH_SquadList : RscListBox {
+	class KPLIB_SquadList : RscListBox {
 		idc = 515;
 		x = 0.15 * safezoneW + safezoneX;
 		w = 0.15 * safezoneW;
 		y = ((BASE_Y + 0.11) * safezoneH) + safezoneY;
 		h = (0.2 * safezoneH) - (2 * BORDERSIZE);
 	};
-	class GREUH_ButtonSquad : GREUH_ButtonGeneric {
+	class KPLIB_ButtonSquad : KPLIB_ButtonGeneric {
 		x = 0.3 * safezoneW + safezoneX + BORDERSIZE;
 		w = ((0.2 * safezoneW) / 4) - BORDERSIZE;
 	};
-	class GREUH_ButtonJoin : GREUH_ButtonSquad {
+	class KPLIB_ButtonJoin : KPLIB_ButtonSquad {
 		idc = 511;
-		text = $STR_GREUH_JOIN;
+		text = $STR_KPLIB_GREUH_JOIN;
 		action = "squadaction = 'join';";
 		y = ((BASE_Y + 0.11) * safezoneH) + safezoneY;
 	};
-	class GREUH_ButtonNew : GREUH_ButtonSquad {
+	class KPLIB_ButtonNew : KPLIB_ButtonSquad {
 		idc = 512;
-		text = $STR_GREUH_CREATE;
+		text = $STR_KPLIB_GREUH_CREATE;
 		action = "squadaction = 'create';";
 		y = ((BASE_Y + 0.15) * safezoneH) + safezoneY;
 	};
-	class GREUH_ButtonRename : GREUH_ButtonSquad {
+	class KPLIB_ButtonRename : KPLIB_ButtonSquad {
 		idc = 513;
-		text = $STR_GREUH_RENAME;
+		text = $STR_KPLIB_GREUH_RENAME;
 		action = "squadaction = 'rename';";
 		y = ((BASE_Y + 0.19) * safezoneH) + safezoneY;
 	};
-	class GREUH_ButtonLeader : GREUH_ButtonSquad {
+	class KPLIB_ButtonLeader : KPLIB_ButtonSquad {
 		idc = 514;
-		text = $STR_GREUH_LEADER;
+		text = $STR_KPLIB_GREUH_LEADER;
 		action = "squadaction = 'leader';";
 		y = ((BASE_Y + 0.23) * safezoneH) + safezoneY;
 	};
-	class GREUH_Squad_OuterBG : GREUH_OuterBG {
+	class KPLIB_Squad_OuterBG : KPLIB_OuterBG {
 		idc = 521;
 		style = ST_SINGLE;
 		x = (0.37 * safezoneW + safezoneX) - (BORDERSIZE);
@@ -354,7 +354,7 @@ class GREUH_Menu {
 		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
 		h = 0.05 * safezoneH  + (3 * BORDERSIZE);
 	};
-	class GREUH_Squad_InnerBG : GREUH_OuterBG {
+	class KPLIB_Squad_InnerBG : KPLIB_OuterBG {
 		idc = 522;
 		colorBackground[] = COLOR_GREEN;
 		x = (0.37 * safezoneW + safezoneX);
@@ -362,31 +362,31 @@ class GREUH_Menu {
 		w = 0.2 * safezoneW;
 		h = 0.05 * safezoneH;
 	};
-	class GREUH_Squad_OuterBG_F : GREUH_Squad_OuterBG {
+	class KPLIB_Squad_OuterBG_F : KPLIB_Squad_OuterBG {
 		idc = 523;
 		style = ST_FRAME;
 	};
-	class GREUH_Squad_InnerBG_F : GREUH_Squad_InnerBG {
+	class KPLIB_Squad_InnerBG_F : KPLIB_Squad_InnerBG {
 		idc = 524;
 		style = ST_FRAME;
 	};
-	class GREUH_ButtonName : GREUH_ButtonGeneric {
+	class KPLIB_ButtonName : KPLIB_ButtonGeneric {
 		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
 		y = ((BASE_Y + 0.19) * safezoneH) + safezoneY;
 	};
-	class GREUH_ButtonName_Rename : GREUH_ButtonName {
+	class KPLIB_ButtonName_Rename : KPLIB_ButtonName {
 		idc = 525;
 		x = 0.4875 * safezoneW + safezoneX;
-		text = $STR_GREUH_RENAME;
+		text = $STR_KPLIB_GREUH_RENAME;
 		action = "squadname = ctrlText 527;";
 	};
-	class GREUH_ButtonName_Abort : GREUH_ButtonName {
+	class KPLIB_ButtonName_Abort : KPLIB_ButtonName {
 		idc = 526;
 		x = (0.4875 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
-		text = $STR_GREUH_CANCEL;
+		text = $STR_KPLIB_GREUH_CANCEL;
 		action = "squadaction = '';";
 	};
-	class GREUH_Squad_TextField : GREUH_ButtonName {
+	class KPLIB_Squad_TextField : KPLIB_ButtonName {
 		idc = 527;
 		type = CT_EDIT;
 		style = ST_LEFT;
@@ -399,7 +399,7 @@ class GREUH_Menu {
 		autocomplete = "";
 	};
 
-	class GREUH_Leader_OuterBG : GREUH_OuterBG {
+	class KPLIB_Leader_OuterBG : KPLIB_OuterBG {
 		idc = 561;
 		style = ST_SINGLE;
 		x = (0.37 * safezoneW + safezoneX) - (BORDERSIZE);
@@ -407,7 +407,7 @@ class GREUH_Menu {
 		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
 		h = 0.05 * safezoneH  + (3 * BORDERSIZE);
 	};
-	class GREUH_Leader_InnerBG : GREUH_OuterBG {
+	class KPLIB_Leader_InnerBG : KPLIB_OuterBG {
 		idc = 562;
 		colorBackground[] = COLOR_GREEN;
 		x = (0.37 * safezoneW + safezoneX);
@@ -415,88 +415,88 @@ class GREUH_Menu {
 		w = 0.2 * safezoneW;
 		h = 0.05 * safezoneH;
 	};
-	class GREUH_Leader_OuterBG_F : GREUH_Leader_OuterBG {
+	class KPLIB_Leader_OuterBG_F : KPLIB_Leader_OuterBG {
 		idc = 563;
 		style = ST_FRAME;
 	};
-	class GREUH_Leader_InnerBG_F : GREUH_Leader_InnerBG {
+	class KPLIB_Leader_InnerBG_F : KPLIB_Leader_InnerBG {
 		idc = 564;
 		style = ST_FRAME;
 	};
-	class GREUH_ButtonLeaderGen : GREUH_ButtonGeneric {
+	class KPLIB_ButtonLeaderGen : KPLIB_ButtonGeneric {
 		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
 		y = ((BASE_Y + 0.23) * safezoneH) + safezoneY;
 	};
-	class GREUH_ButtonLeader_Choose : GREUH_ButtonLeaderGen {
+	class KPLIB_ButtonLeader_Choose : KPLIB_ButtonLeaderGen {
 		idc = 565;
 		x = 0.4875 * safezoneW + safezoneX;
-		text = $STR_GREUH_CHOOSE;
+		text = $STR_KPLIB_GREUH_CHOOSE;
 		action = "choose_squadleader = lbCurSel 567;";
 	};
-	class GREUH_ButtonLeader_Abort : GREUH_ButtonLeaderGen {
+	class KPLIB_ButtonLeader_Abort : KPLIB_ButtonLeaderGen {
 		idc = 566;
 		x = (0.4875 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
-		text = $STR_GREUH_CANCEL;
+		text = $STR_KPLIB_GREUH_CANCEL;
 		action = "squadaction = ''";
 	};
-	class GREUH_Squad_Combo : RscCombo {
+	class KPLIB_Squad_Combo : RscCombo {
 		idc = 567;
 		x = (0.37 * safezoneW + safezoneX) + BORDERSIZE;
 		w = 0.11 * safezoneW;
 		y = ((BASE_Y + 0.23) * safezoneH) + safezoneY;
 		h = 0.03 * safezoneH;
 	};
-	class GREUH_PlatoonZone : GREUH_DefaultZone {
+	class KPLIB_PlatoonZone : KPLIB_DefaultZone {
 		idc = 601;
 		y = ((BASE_Y + 0.35) * safezoneH) + safezoneY;
 		h = (0.04 * safezoneH) - (2 * BORDERSIZE);
 	};
-	class GREUH_PlatoonLabel : GREUH_Label {
+	class KPLIB_PlatoonLabel : KPLIB_Label {
 		idc = 610;
 		y = ((BASE_Y + 0.31) * safezoneH) + safezoneY;
-		text = $STR_GREUH_PLATOON_SQUAD_AWARENESS;
+		text = $STR_KPLIB_GREUH_PLATOON_SQUAD_AWARENESS;
 	};
-	class GREUH_LabelPlatoon : GREUH_RegularLabel {
+	class KPLIB_LabelPlatoon : KPLIB_RegularLabel {
 		idc = 611;
 		y = ((BASE_Y + 0.35) * safezoneH) + safezoneY;
-		text = $STR_GREUH_SHOW_PLATOON_OVERLAY;
+		text = $STR_KPLIB_GREUH_SHOW_PLATOON_OVERLAY;
 	};
-	class GREUH_LabelPlatoonActive : GREUH_RegularLabel {
+	class KPLIB_LabelPlatoonActive : KPLIB_RegularLabel {
 		idc = 612;
 		style = ST_RIGHT;
 		colorText[] = COLOR_BRIGHTGREEN;
-		text = $STR_GREUH_ACTIVE;
+		text = $STR_KPLIB_GREUH_ACTIVE;
 		x = 0.2 * safezoneW + safezoneX;
 		w = 0.1 * safezoneW;
 		y = ((BASE_Y + 0.35) * safezoneH) + safezoneY;
 	};
-	class GREUH_PlatoonYes : GREUH_ButtonGeneric {
+	class KPLIB_PlatoonYes : KPLIB_ButtonGeneric {
 		idc = 613;
 		w = ((0.08 * safezoneW) / 4);
 		y = ((BASE_Y + 0.35) * safezoneH) + safezoneY;
 		x = 0.305 * safezoneW + safezoneX;
-		text = $STR_GREUH_YES;
+		text = $STR_KPLIB_GREUH_YES;
 		action = "show_platoon = true";
 	};
-	class GREUH_PlatoonNo : GREUH_ButtonGeneric {
+	class KPLIB_PlatoonNo : KPLIB_ButtonGeneric {
 		idc = 614;
 		w = ((0.08 * safezoneW) / 4);
 		y = ((BASE_Y + 0.35) * safezoneH) + safezoneY;
 		x = (0.32 + BORDERSIZE) * safezoneW + safezoneX;
-		text = $STR_GREUH_NO;
+		text = $STR_KPLIB_GREUH_NO;
 		action = "show_platoon = false";
 	};
-	class GREUH_ViewZone : GREUH_DefaultZone {
+	class KPLIB_ViewZone : KPLIB_DefaultZone {
 		idc = 701;
 		y = ((BASE_Y + 0.51) * safezoneH) + safezoneY;
 		h = (0.04 * safezoneH) - (2 * BORDERSIZE);
 	};
-	class GREUH_ViewDistance : GREUH_Label {
+	class KPLIB_ViewDistance : KPLIB_Label {
 		idc = 711;
 		y = ((BASE_Y + 0.47) * safezoneH) + safezoneY;
-		text = $STR_GREUH_ADJUST_VIEW_DISTANCE;
+		text = $STR_KPLIB_GREUH_ADJUST_VIEW_DISTANCE;
 	};
-	class GREUH_Slider {
+	class KPLIB_Slider {
 		idc = 712;
 		type = CT_SLIDER;
 		style = SL_HORZ;
@@ -504,12 +504,12 @@ class GREUH_Menu {
 		w = 0.12 * safezoneW;
 		y = ((BASE_Y + 0.515) * safezoneH) + safezoneY;
 		h = 0.025 * safezoneH;
-		text = $STR_GREUH_VIEW_DISTANCE;
+		text = $STR_KPLIB_GREUH_VIEW_DISTANCE;
 		color[] = { 1, 1, 1, 1 };
 		coloractive[] = { 1, 1, 1, 1 };
 		onSliderPosChanged = "desiredviewdistance_inf = (sliderPosition 712)";
 	};
-	class GREUH_SliderVD : GREUH_Label {
+	class KPLIB_SliderVD : KPLIB_Label {
 		idc = 713;
 		style = ST_LEFT;
 		x = 0.31 * safezoneW + safezoneX;
@@ -519,7 +519,7 @@ class GREUH_Menu {
 		colorBackground[] = COLOR_NOALPHA;
 		text = "";
 	};
-	class GREUH_LabelVD : GREUH_Label {
+	class KPLIB_LabelVD : KPLIB_Label {
 		idc = 714;
 		style = ST_LEFT;
 		x = 0.15 * safezoneW + safezoneX;
@@ -527,9 +527,9 @@ class GREUH_Menu {
 		y = ((BASE_Y + 0.505) * safezoneH) + safezoneY;
 		h = 0.03 * safezoneH;
 		colorBackground[] = COLOR_NOALPHA;
-		text = $STR_GREUH_INFANTRY;
+		text = $STR_KPLIB_GREUH_INFANTRY;
 	};
-	class GREUH_SliderVeh {
+	class KPLIB_SliderVeh {
 		idc = 722;
 		type = CT_SLIDER;
 		style = SL_HORZ;
@@ -537,12 +537,12 @@ class GREUH_Menu {
 		w = 0.12 * safezoneW;
 		y = ((BASE_Y + 0.545) * safezoneH) + safezoneY;
 		h = 0.025 * safezoneH;
-		text = $STR_GREUH_VIEW_DISTANCE;
+		text = $STR_KPLIB_GREUH_VIEW_DISTANCE;
 		color[] = { 1, 1, 1, 1 };
 		coloractive[] = { 1, 1, 1, 1 };
 		onSliderPosChanged = "desiredviewdistance_veh = (sliderPosition 722)";
 	};
-	class GREUH_SliderVDVeh : GREUH_Label {
+	class KPLIB_SliderVDVeh : KPLIB_Label {
 		idc = 723;
 		style = ST_LEFT;
 		x = 0.31 * safezoneW + safezoneX;
@@ -552,7 +552,7 @@ class GREUH_Menu {
 		colorBackground[] = COLOR_NOALPHA;
 		text = "";
 	};
-	class GREUH_LabelVDVeh : GREUH_Label {
+	class KPLIB_LabelVDVeh : KPLIB_Label {
 		idc = 724;
 		style = ST_LEFT;
 		x = 0.15 * safezoneW + safezoneX;
@@ -560,9 +560,9 @@ class GREUH_Menu {
 		y = ((BASE_Y + 0.535) * safezoneH) + safezoneY;
 		h = 0.03 * safezoneH;
 		colorBackground[] = COLOR_NOALPHA;
-		text = $STR_GREUH_VEHICLES;
+		text = $STR_KPLIB_GREUH_VEHICLES;
 	};
-	class GREUH_SliderObj {
+	class KPLIB_SliderObj {
 		idc = 732;
 		type = CT_SLIDER;
 		style = SL_HORZ;
@@ -570,12 +570,12 @@ class GREUH_Menu {
 		w = 0.12 * safezoneW;
 		y = ((BASE_Y + 0.575) * safezoneH) + safezoneY;
 		h = 0.025 * safezoneH;
-		text = $STR_GREUH_VIEW_DISTANCE;
+		text = $STR_KPLIB_GREUH_VIEW_DISTANCE;
 		color[] = { 1, 1, 1, 1 };
 		coloractive[] = { 1, 1, 1, 1 };
 		onSliderPosChanged = "desiredviewdistance_obj = (sliderPosition 732)";
 	};
-	class GREUH_SliderVDObj : GREUH_Label {
+	class KPLIB_SliderVDObj : KPLIB_Label {
 		idc = 733;
 		style = ST_LEFT;
 		x = 0.31 * safezoneW + safezoneX;
@@ -585,7 +585,7 @@ class GREUH_Menu {
 		colorBackground[] = COLOR_NOALPHA;
 		text = "";
 	};
-	class GREUH_LabelVDObj : GREUH_Label {
+	class KPLIB_LabelVDObj : KPLIB_Label {
 		idc = 734;
 		style = ST_LEFT;
 		x = 0.15 * safezoneW + safezoneX;
@@ -593,9 +593,9 @@ class GREUH_Menu {
 		y = ((BASE_Y + 0.565) * safezoneH) + safezoneY;
 		h = 0.03 * safezoneH;
 		colorBackground[] = COLOR_NOALPHA;
-		text = $STR_GREUH_OBJECTS;
+		text = $STR_KPLIB_GREUH_OBJECTS;
 	};
-	class GREUH_FPSLabel : GREUH_Label {
+	class KPLIB_FPSLabel : KPLIB_Label {
 		idc = 724;
 		style = ST_LEFT;
 		x = 0.15 * safezoneW + safezoneX;
@@ -604,9 +604,9 @@ class GREUH_Menu {
 		h = 0.03 * safezoneH;
 		colorBackground[] = COLOR_NOALPHA;
 		sizeEx = 0.018 * safezoneH;
-		text = $STR_GREUH_ADJUST_VIEW_DISTANCE_TO_KEEP_FPS_ABOVE;
+		text = $STR_KPLIB_GREUH_ADJUST_VIEW_DISTANCE_TO_KEEP_FPS_ABOVE;
 	};
-	class GREUH_FPSEdit {
+	class KPLIB_FPSEdit {
 		idc = 960;
 		type = CT_EDIT;
 		style = ST_LEFT + ST_FRAME;
@@ -625,116 +625,116 @@ class GREUH_Menu {
 		text = "";
 		shadow = 0;
 	};
-	class GREUH_WorldZone : GREUH_DefaultZone {
+	class KPLIB_WorldZone : KPLIB_DefaultZone {
 		idc = 801;
 		y = ((BASE_Y + 0.7) * safezoneH) + safezoneY;
 		h = (0.04 * safezoneH) - (2 * BORDERSIZE);
 	};
-	class GREUH_WorldQuality : GREUH_Label {
+	class KPLIB_WorldQuality : KPLIB_Label {
 		idc = 810;
 		y = ((BASE_Y + 0.66) * safezoneH) + safezoneY;
-		text = $STR_GREUH_ADJUST_TERRAIN_DETAILS;
+		text = $STR_KPLIB_GREUH_ADJUST_TERRAIN_DETAILS;
 	};
-	class GREUH_ButtonWorld : GREUH_ButtonGeneric {
+	class KPLIB_ButtonWorld : KPLIB_ButtonGeneric {
 		w = ((0.2 * safezoneW) / 4) - BORDERSIZE;
 		y = ((BASE_Y + 0.7) * safezoneH) + safezoneY;
 	};
-	class GREUH_ButtonWorldVeryLow : GREUH_ButtonWorld {
+	class KPLIB_ButtonWorldVeryLow : KPLIB_ButtonWorld {
 		idc = 812;
 		x = 0.15 * safezoneW + safezoneX;
-		text = $STR_GREUH_VERY_LOW;
+		text = $STR_KPLIB_GREUH_VERY_LOW;
 		action = "setTerrainGrid 50; hint 'Terrain details set to Very Low'";
 	};
-	class GREUH_ButtonWorldLow : GREUH_ButtonWorld {
+	class KPLIB_ButtonWorldLow : KPLIB_ButtonWorld {
 		idc = 813;
 		x = (0.15 * safezoneW + safezoneX) + (((0.2 * safezoneW) / 4) * 1);
-		text = $STR_GREUH_LOW;
+		text = $STR_KPLIB_GREUH_LOW;
 		action = "setTerrainGrid 25; hint 'Terrain details set to Low'";
 	};
-	class GREUH_ButtonWorldNormal : GREUH_ButtonWorld {
+	class KPLIB_ButtonWorldNormal : KPLIB_ButtonWorld {
 		idc = 814;
 		x = (0.15 * safezoneW + safezoneX) + (((0.2 * safezoneW) / 4) * 2);
-		text = $STR_GREUH_NORMAL;
+		text = $STR_KPLIB_GREUH_NORMAL;
 		action = "setTerrainGrid 12.5; hint 'Terrain details set to Normal'";
 	};
-	class GREUH_ButtonWorldHigh : GREUH_ButtonWorld {
+	class KPLIB_ButtonWorldHigh : KPLIB_ButtonWorld {
 		idc = 815;
 		x = (0.15 * safezoneW + safezoneX) + (((0.2 * safezoneW) / 4) * 3);
-		text = $STR_GREUH_HIGH;
+		text = $STR_KPLIB_GREUH_HIGH;
 		action = "setTerrainGrid 3.125; hint 'Terrain details set to High'";
 	};
-	class GREUH_MarkersZone : GREUH_DefaultZone {
+	class KPLIB_MarkersZone : KPLIB_DefaultZone {
 		idc = 901;
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
 		h = (0.04 * safezoneH) - (2 * BORDERSIZE);
 	};
-	class GREUH_LabelNametags : GREUH_RegularLabel {
+	class KPLIB_LabelNametags : KPLIB_RegularLabel {
 		idc = 961;
 		y = ((BASE_Y + 0.39) * safezoneH) + safezoneY;
-		text = $STR_GREUH_SHOW_PLAYER_NAMETAGS;
+		text = $STR_KPLIB_GREUH_SHOW_PLAYER_NAMETAGS;
 	};
-	class GREUH_NametagsActive : GREUH_RegularLabel {
+	class KPLIB_NametagsActive : KPLIB_RegularLabel {
 		idc = 962;
 		style = ST_RIGHT;
 		colorText[] = COLOR_BRIGHTGREEN;
-		text = $STR_GREUH_ACTIVE;
+		text = $STR_KPLIB_GREUH_ACTIVE;
 		x = 0.2 * safezoneW + safezoneX;
 		w = 0.1 * safezoneW;
 		y = ((BASE_Y + 0.39) * safezoneH) + safezoneY;
 	};
-	class GREUH_NametagsYes : GREUH_ButtonGeneric {
+	class KPLIB_NametagsYes : KPLIB_ButtonGeneric {
 		idc = 963;
 		w = ((0.08 * safezoneW) / 4);
 		y = ((BASE_Y + 0.39) * safezoneH) + safezoneY;
 		x = 0.305 * safezoneW + safezoneX;
-		text = $STR_GREUH_YES;
+		text = $STR_KPLIB_GREUH_YES;
 		action = "show_nametags = true";
 	};
-	class GREUH_NametagsNo : GREUH_ButtonGeneric {
+	class KPLIB_NametagsNo : KPLIB_ButtonGeneric {
 		idc = 964;
 		w = ((0.08 * safezoneW) / 4);
 		y = ((BASE_Y + 0.39) * safezoneH) + safezoneY;
 		x = (0.32 + BORDERSIZE) * safezoneW + safezoneX;
-		text = $STR_GREUH_NO;
+		text = $STR_KPLIB_GREUH_NO;
 		action = "show_nametags = false";
 	};
-	class GREUH_LabelMarkers : GREUH_RegularLabel {
+	class KPLIB_LabelMarkers : KPLIB_RegularLabel {
 		idc = 911;
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
-		text = $STR_GREUH_SHOW_TEAMMATES_ON_MAP;
+		text = $STR_KPLIB_GREUH_SHOW_TEAMMATES_ON_MAP;
 	};
-	class GREUH_LabelMarkersActive : GREUH_RegularLabel {
+	class KPLIB_LabelMarkersActive : KPLIB_RegularLabel {
 		idc = 912;
 		style = ST_RIGHT;
 		colorText[] = COLOR_BRIGHTGREEN;
-		text = $STR_GREUH_ACTIVE;
+		text = $STR_KPLIB_GREUH_ACTIVE;
 		x = 0.2 * safezoneW + safezoneX;
 		w = 0.1 * safezoneW;
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
 	};
-	class GREUH_TeammatesYes : GREUH_ButtonGeneric {
+	class KPLIB_TeammatesYes : KPLIB_ButtonGeneric {
 		idc = 913;
 		w = ((0.08 * safezoneW) / 4);
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
 		x = 0.305 * safezoneW + safezoneX;
-		text = $STR_GREUH_YES;
+		text = $STR_KPLIB_GREUH_YES;
 		action = "show_teammates = true";
 	};
-	class GREUH_TeammatesNo : GREUH_ButtonGeneric {
+	class KPLIB_TeammatesNo : KPLIB_ButtonGeneric {
 		idc = 914;
 		w = ((0.08 * safezoneW) / 4);
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
 		x = (0.32 + BORDERSIZE) * safezoneW + safezoneX;
-		text = $STR_GREUH_NO;
+		text = $STR_KPLIB_GREUH_NO;
 		action = "show_teammates = false";
 	};
 
-	class GREUH_VehSound : GREUH_Label {
+	class KPLIB_VehSound : KPLIB_Label {
 		idc = 1101;
 		y = ((BASE_Y + 0.74) * safezoneH) + safezoneY;
-		text = $STR_GREUH_INVEHICLE_SOUND_VOLUME;
+		text = $STR_KPLIB_GREUH_INVEHICLE_SOUND_VOLUME;
 	};
-	class GREUH_SliderVehSound {
+	class KPLIB_SliderVehSound {
 		idc = 1102;
 		type = CT_SLIDER;
 		style = SL_HORZ;
@@ -742,12 +742,12 @@ class GREUH_Menu {
 		w = 0.16 * safezoneW;
 		y = ((BASE_Y + 0.785) * safezoneH) + safezoneY;
 		h = 0.025 * safezoneH;
-		text = $STR_GREUH_VIEW_DISTANCE;
+		text = $STR_KPLIB_GREUH_VIEW_DISTANCE;
 		color[] = { 1, 1, 1, 1 };
 		coloractive[] = { 1, 1, 1, 1 };
 		onSliderPosChanged = "desired_vehvolume = (sliderPosition 1102)";
 	};
-	class GREUH_LabelVehSound : GREUH_Label {
+	class KPLIB_LabelVehSound : KPLIB_Label {
 		idc = 1103;
 		style = ST_LEFT;
 		x = 0.31 * safezoneW + safezoneX;
@@ -755,7 +755,7 @@ class GREUH_Menu {
 		y = ((BASE_Y + 0.775) * safezoneH) + safezoneY;
 		h = 0.03 * safezoneH;
 		colorBackground[] = COLOR_NOALPHA;
-		text = $STR_GREUH_TEST;
+		text = $STR_KPLIB_GREUH_TEST;
 	};
 };
 
@@ -792,31 +792,31 @@ class GreuhButton {
 	shadow = 1;
 };
 
-class GREUH_respawn {
+class KPLIB_respawn {
 	idd = 5566;
 	movingEnable = false;
-	controlsBackground[] = {"GREUH_BleedoutBar_BG"};
-	controls[] = {"GREUH_BleedoutBar","GREUH_BleedoutBar_F","GREUH_Useless","GREUH_Respawn","GREUH_ReviveLabel","GREUH_WoundedLabel", "GREUH_ReplaceAI"};
+	controlsBackground[] = {"KPLIB_BleedoutBar_BG"};
+	controls[] = {"KPLIB_BleedoutBar","KPLIB_BleedoutBar_F","KPLIB_Useless","KPLIB_Respawn","KPLIB_ReviveLabel","KPLIB_WoundedLabel", "KPLIB_ReplaceAI"};
 	objects[] = {};
-	class GREUH_Respawn : GreuhButton {
+	class KPLIB_Respawn : GreuhButton {
 		idc = -1;
 		x = 0.45 * safezoneW + safezoneX;
 		y = 0.75 * safezoneH + safezoneY;
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
-		text = $STR_GREUH_RESPAWN;
+		text = $STR_KPLIB_GREUH_RESPAWN;
 		action = "player setDamage 1";
 	};
-	class GREUH_ReplaceAI : GreuhButton {
+	class KPLIB_ReplaceAI : GreuhButton {
 		idc = 678;
 		x = 0.45 * safezoneW + safezoneX;
 		y = 0.8 * safezoneH + safezoneY;
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
-		text = $STR_GREUH_REPLACE_NEAREST_AI;
+		text = $STR_KPLIB_GREUH_REPLACE_NEAREST_AI;
 		action = "replace_ai = 1";
 	};
-	class GREUH_Useless : GREUH_Respawn {
+	class KPLIB_Useless : KPLIB_Respawn {
 		idc = -1;
 		x = -5;
 		y = -5;
@@ -825,7 +825,7 @@ class GREUH_respawn {
 		text = "";
 		action = "";
 	};
-	class GREUH_ReviveLabel {
+	class KPLIB_ReviveLabel {
 		idc = 5567;
 		type =  CT_STATIC;
 		style = ST_CENTER;
@@ -840,7 +840,7 @@ class GREUH_respawn {
 		h = 0.025 * safezoneH;
 		text = "";
 	};
-	class GREUH_WoundedLabel {
+	class KPLIB_WoundedLabel {
 		idc = 4567;
 		type =  CT_STATIC;
 		style = ST_CENTER;
@@ -855,7 +855,7 @@ class GREUH_respawn {
 		h = 0.07 * safezoneH;
 		text = $STR_REVIVE_LABEL;
 	};
-	class GREUH_BleedoutBar {
+	class KPLIB_BleedoutBar {
 		idc = 6699;
 		type =  CT_STATIC;
 		style = ST_SINGLE;
@@ -869,7 +869,7 @@ class GREUH_respawn {
 		h = 0.03 * safezoneH;
 		text = "";
 	};
-	class GREUH_BleedoutBar_BG : GREUH_BleedoutBar {
+	class KPLIB_BleedoutBar_BG : KPLIB_BleedoutBar {
 		idc = -1;
 		colorBackground[] = COLOR_BLACK_ALPHA;
 		x = 0.4 * safezoneW + safezoneX - 0.005;
@@ -877,7 +877,7 @@ class GREUH_respawn {
 		w = 0.2 * safezoneW + 0.01;
 		h = 0.03 * safezoneH + 0.01;
 	};
-	class GREUH_BleedoutBar_F : GREUH_BleedoutBar {
+	class KPLIB_BleedoutBar_F : KPLIB_BleedoutBar {
 		idc = 6698;
 		colorText[] = COLOR_WHITE;
 		style = ST_FRAME;

@@ -2,7 +2,7 @@
 KPLIB_init = false;
 
 // Version of the KP Liberation framework
-KP_liberation_version = [0, 96, "7a"];
+KPLIB_version = [0, 96, "7a"];
 
 enableSaving [ false, false ];
 
@@ -10,26 +10,26 @@ if (isDedicated) then {debug_source = "Server";} else {debug_source = name playe
 
 [] call KPLIB_fnc_initSectors;
 if (!isServer) then {waitUntil {!isNil "KPLIB_initServer"};};
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
+[] call compileFinal preprocessFileLineNumbers "SCRIPTS\SHARED\fetch_params.sqf";
 [] call compileFinal preprocessFileLineNumbers "kp_liberation_config.sqf";
-[] call compileFinal preprocessFileLineNumbers "presets\init_presets.sqf";
+[] call compileFinal preprocessFileLineNumbers "PRESETS\init_presets.sqf";
 [] call compileFinal preprocessFileLineNumbers "kp_objectInits.sqf";
 
 // Activate selected player menu. If CBA isn't loaded -> fallback to GREUH
-if (KPPLM_CBA && KP_liberation_playermenu) then {
-    [] call KPPLM_fnc_postInit;
+if (KPLIB_CBA && KPLIB_playermenu) then {
+    [] call KPLIB_fnc_postInit;
 } else {
-    [] execVM "GREUH\scripts\GREUH_activate.sqf";
+    [] execVM "GREUH\SCRIPTS\GREUH_activate.sqf";
 };
 
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
+[] call compileFinal preprocessFileLineNumbers "SCRIPTS\SHARED\init_shared.sqf";
 
 if (isServer) then {
-    [] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
+    [] call compileFinal preprocessFileLineNumbers "SCRIPTS\SERVER\init_server.sqf";
 };
 
 if (!isDedicated && !hasInterface && isMultiplayer) then {
-    execVM "scripts\server\offloading\hc_manager.sqf";
+    execVM "SCRIPTS\SERVER\OFFLOADING\hc_manager.sqf";
 };
 
 if (!isDedicated && hasInterface) then {
@@ -45,7 +45,7 @@ if (!isDedicated && hasInterface) then {
 
     waitUntil {alive player};
     if (debug_source != name player) then {debug_source = name player};
-    [] call compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
+    [] call compileFinal preprocessFileLineNumbers "SCRIPTS\CLIENT\init_client.sqf";
 } else {
     setViewDistance 1600;
 };

@@ -16,6 +16,7 @@ a packed PBO but broken on a case-sensitive Linux server), or an unregistered
 The mission engine is case-insensitive, so resolution is too; paths use
 backslashes relative to the mission root (``Missionframework/``).
 """
+
 # argparse Namespaces are dynamically typed and add_argument() returns an unused
 # Action; these strict-only lints fire only on that CLI plumbing.
 # pyright: reportAny=false, reportUnusedCallResult=false
@@ -33,17 +34,17 @@ _DEFAULT_ROOT = _REPO_ROOT / "Missionframework"
 
 
 class Finding(NamedTuple):
-    severity: str   # "error" | "warning"
-    category: str   # "cfgfunctions" | "reference" | "orphan"
-    ref: str        # the referenced path / expected file
-    source: str     # where the reference lives
+    severity: str  # "error" | "warning"
+    category: str  # "cfgfunctions" | "reference" | "orphan"
+    ref: str  # the referenced path / expected file
+    source: str  # where the reference lives
     message: str
 
 
 class Resolution(NamedTuple):
-    exists: bool        # found, at least case-insensitively
-    exact: bool         # found with the exact case as written
-    real: str | None    # actual on-disk relpath (posix), or None if missing
+    exists: bool  # found, at least case-insensitively
+    exact: bool  # found with the exact case as written
+    real: str | None  # actual on-disk relpath (posix), or None if missing
 
 
 def resolve_mission_path(root: Path, raw: str) -> Resolution:
@@ -143,7 +144,7 @@ class _Frame:
 
     def __init__(self, name: str):
         self.name = name
-        self.file: str | None = None        # own file= (group dir or override)
+        self.file: str | None = None  # own file= (group dir or override)
         self.ext: str | None = None
         self.has_child = False
 
@@ -165,8 +166,9 @@ def _slice_cfgfunctions_block(text: str) -> str:
     return text[start:]
 
 
-def _walk(tokens: Iterator[re.Match[str]], stack: list[_Frame], root: Path,
-          entries: list[tuple[str, str]]) -> None:
+def _walk(
+    tokens: Iterator[re.Match[str]], stack: list[_Frame], root: Path, entries: list[tuple[str, str]]
+) -> None:
     pending_name: str | None = None
     for m in tokens:
         if m.group("cname"):
@@ -202,7 +204,11 @@ def _emit_if_function(frame: _Frame, parent: _Frame | None, entries: list[tuple[
     ext = frame.ext or ".sqf"
     if frame.file is not None:
         # Function-level full-path override.
-        rel = frame.file if frame.file.endswith((".sqf", ".fsm")) else f"{frame.file}/fn_{frame.name}{ext}"
+        rel = (
+            frame.file
+            if frame.file.endswith((".sqf", ".fsm"))
+            else f"{frame.file}/fn_{frame.name}{ext}"
+        )
         entries.append((frame.name, rel))
     elif parent is not None and parent.file:
         entries.append((frame.name, f"{parent.file}/fn_{frame.name}{ext}"))
@@ -225,15 +231,25 @@ def check_cfgfunctions(root: Path) -> list[Finding]:
     for name, rel in cfgfunctions_entries(root):
         res = resolve_mission_path(root, rel)
         if not res.exists:
-            findings.append(Finding(
-                "error", "cfgfunctions", rel, "CfgFunctions",
-                f"registered function '{name}' has no file: {rel}",
-            ))
+            findings.append(
+                Finding(
+                    "error",
+                    "cfgfunctions",
+                    rel,
+                    "CfgFunctions",
+                    f"registered function '{name}' has no file: {rel}",
+                )
+            )
         elif not res.exact:
-            findings.append(Finding(
-                "warning", "cfgfunctions", rel, "CfgFunctions",
-                f"function '{name}' case mismatch: referenced {rel}, on disk {res.real}",
-            ))
+            findings.append(
+                Finding(
+                    "warning",
+                    "cfgfunctions",
+                    rel,
+                    "CfgFunctions",
+                    f"function '{name}' case mismatch: referenced {rel}, on disk {res.real}",
+                )
+            )
     return findings
 
 
@@ -280,12 +296,14 @@ def scan_references(root: Path) -> list[Finding]:
         if not res.exists:
             findings.append(Finding("error", category, raw, source, f"unresolved path: {raw}"))
         elif not res.exact:
-            findings.append(Finding("warning", category, raw, source,
-                                    f"case mismatch: {raw} -> {res.real}"))
+            findings.append(
+                Finding("warning", category, raw, source, f"case mismatch: {raw} -> {res.real}")
+            )
     return findings
 
 
 # ---- Orphan detection -------------------------------------------------------
+
 
 def find_orphans(root: Path) -> list[Finding]:
     """Flag ``fn_*.sqf`` files that are not registered in CfgFunctions (dead functions).
@@ -303,8 +321,15 @@ def find_orphans(root: Path) -> list[Finding]:
     for path in sorted(root.rglob("fn_*.sqf")):
         rel = path.relative_to(root).as_posix()
         if rel.lower() not in registered:
-            findings.append(Finding("warning", "orphan", rel, rel,
-                                    f"function file not registered in CfgFunctions: {rel}"))
+            findings.append(
+                Finding(
+                    "warning",
+                    "orphan",
+                    rel,
+                    rel,
+                    f"function file not registered in CfgFunctions: {rel}",
+                )
+            )
     return findings
 
 
@@ -315,6 +340,7 @@ def run_all(root: Path) -> list[Finding]:
 
 # ---- CLI --------------------------------------------------------------------
 
+
 def _report(findings: list[Finding]) -> int:
     """Print findings; exit non-zero (CI red) if there is ANY error or warning."""
     errors = [f for f in findings if f.severity == "error"]
@@ -324,8 +350,10 @@ def _report(findings: list[Finding]) -> int:
     for f in warnings:
         print(f"warning [{f.category}] {f.source}: {f.message}")
 
-    by_cat = {c: sum(1 for f in warnings if f.category == c)
-              for c in sorted({f.category for f in warnings})}
+    by_cat = {
+        c: sum(1 for f in warnings if f.category == c)
+        for c in sorted({f.category for f in warnings})
+    }
     wsummary = ", ".join(f"{n} {c}" for c, n in by_cat.items()) or "none"
     print(f"\n{len(errors)} error(s), {len(warnings)} warning(s) ({wsummary}).")
     return 1 if (errors or warnings) else 0
@@ -333,10 +361,15 @@ def _report(findings: list[Finding]) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="KP Liberation reference-integrity checker.")
-    parser.add_argument("--root", type=Path, default=_DEFAULT_ROOT,
-                        help="Mission framework root (default: Missionframework/).")
-    parser.add_argument("--json", type=Path, default=None,
-                        help="Also write all findings as JSON to this path.")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=_DEFAULT_ROOT,
+        help="Mission framework root (default: Missionframework/).",
+    )
+    parser.add_argument(
+        "--json", type=Path, default=None, help="Also write all findings as JSON to this path."
+    )
     args = parser.parse_args(argv)
 
     findings = run_all(args.root)

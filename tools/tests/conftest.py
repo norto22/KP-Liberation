@@ -1,4 +1,5 @@
 """Make the tools/ modules importable from tests without packaging."""
+
 import sys
 from pathlib import Path
 
