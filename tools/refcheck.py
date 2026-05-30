@@ -8,9 +8,10 @@ Validates that every file the mission *refers to* actually exists:
 * **Script loads** (Task 3) — every `execVM`/`preprocessFile`/`#include`
   string-literal path resolves.
 
-A genuinely missing target (not found even case-insensitively) is a gating
-ERROR; a case-only mismatch — harmless in a packed PBO, broken on a
-case-sensitive Linux server — is a non-failing WARNING.
+Any finding fails the check (exit 1) so CI goes red on every reference
+problem: a missing target (ERROR), a case-only mismatch (WARNING — harmless in
+a packed PBO but broken on a case-sensitive Linux server), or an unregistered
+``fn_`` function (WARNING).
 
 The mission engine is case-insensitive, so resolution is too; paths use
 backslashes relative to the mission root (``Missionframework/``).
@@ -29,9 +30,6 @@ from typing import NamedTuple, final
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 _DEFAULT_ROOT = _REPO_ROOT / "Missionframework"
-# Accepts pre-existing broken references (legacy/dead code) so the gate fails
-# only on NEWLY introduced ones. Mirrors the sqf_lint baseline.
-_DEFAULT_REF_BASELINE = Path(__file__).resolve().parent / "refcheck_baseline.json"
 
 
 class Finding(NamedTuple):
@@ -261,60 +259,28 @@ def run_all(root: Path) -> list[Finding]:
     return check_cfgfunctions(root) + scan_references(root) + find_orphans(root)
 
 
-# ---- Baseline (accepted pre-existing errors) --------------------------------
-
-def _err_key(f: Finding) -> tuple[str, str, str]:
-    return (f.category, f.source, f.ref)
-
-
-def load_ref_baseline(path: Path) -> set[tuple[str, str, str]]:
-    """Load accepted-error keys from the baseline JSON (empty set if absent)."""
-    path = Path(path)
-    if not path.exists():
-        return set()
-    data = json.loads(path.read_text())
-    return {(d["category"], d["source"], d["ref"]) for d in data}
-
-
-def format_ref_baseline(errors: list[Finding]) -> str:
-    items = sorted({_err_key(f) for f in errors})
-    payload = [{"category": c, "source": s, "ref": r} for c, s, r in items]
-    return json.dumps(payload, indent=2) + "\n"
-
-
 # ---- CLI --------------------------------------------------------------------
 
-def _report(findings: list[Finding], baseline: set[tuple[str, str, str]]) -> int:
+def _report(findings: list[Finding]) -> int:
+    """Print findings; exit non-zero (CI red) if there is ANY error or warning."""
     errors = [f for f in findings if f.severity == "error"]
     warnings = [f for f in findings if f.severity == "warning"]
-    new_errors = [f for f in errors if _err_key(f) not in baseline]
-    known_errors = [f for f in errors if _err_key(f) in baseline]
-
-    for f in new_errors:
-        print(f"ERROR [{f.category}] {f.source}: {f.message}")
-    for f in known_errors:
-        print(f"known   [{f.category}] {f.source}: {f.message}  (baselined)")
+    for f in errors:
+        print(f"ERROR   [{f.category}] {f.source}: {f.message}")
     for f in warnings:
         print(f"warning [{f.category}] {f.source}: {f.message}")
 
     by_cat = {c: sum(1 for f in warnings if f.category == c)
               for c in sorted({f.category for f in warnings})}
     wsummary = ", ".join(f"{n} {c}" for c, n in by_cat.items()) or "none"
-    print(
-        f"\n{len(new_errors)} new error(s); {len(known_errors)} baselined error(s); "
-        + f"{len(warnings)} warning(s) ({wsummary})."
-    )
-    return 1 if new_errors else 0
+    print(f"\n{len(errors)} error(s), {len(warnings)} warning(s) ({wsummary}).")
+    return 1 if (errors or warnings) else 0
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="KP Liberation reference-integrity checker.")
     parser.add_argument("--root", type=Path, default=_DEFAULT_ROOT,
                         help="Mission framework root (default: Missionframework/).")
-    parser.add_argument("--baseline", type=Path, default=_DEFAULT_REF_BASELINE,
-                        help="Accepted-errors baseline JSON.")
-    parser.add_argument("--update-baseline", action="store_true",
-                        help="Rewrite the baseline from current errors and exit 0.")
     parser.add_argument("--json", type=Path, default=None,
                         help="Also write all findings as JSON to this path.")
     args = parser.parse_args(argv)
@@ -322,14 +288,7 @@ def main(argv: list[str] | None = None) -> int:
     findings = run_all(args.root)
     if args.json is not None:
         Path(args.json).write_text(json.dumps([f._asdict() for f in findings], indent=2))
-
-    errors = [f for f in findings if f.severity == "error"]
-    if args.update_baseline:
-        Path(args.baseline).write_text(format_ref_baseline(errors))
-        print(f"Baseline updated: {len(errors)} accepted error(s) -> {args.baseline}")
-        return 0
-
-    return _report(findings, load_ref_baseline(args.baseline))
+    return _report(findings)
 
 
 if __name__ == "__main__":

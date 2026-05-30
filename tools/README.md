@@ -22,7 +22,7 @@ pip install -r tools/requirements.txt
 | Script | What it does | Gates CI? |
 |--------|--------------|-----------|
 | `sqf_lint.py` | Runs the `sqflint` analyzer over every `Missionframework/**/*.sqf`; fails only on findings **not** in the committed baseline. | Yes — on *new* findings |
-| `refcheck.py` | Resolves every `CfgFunctions` class→file mapping and every `execVM`/`preprocessFile`/`#include` path; flags broken references and orphan files. | Yes — on broken references |
+| `refcheck.py` | Resolves every `CfgFunctions` class→file mapping and every `execVM`/`preprocessFile`/`#include` path; flags broken references and orphan files. | Yes — on **any** error or warning |
 | `namespace_keys.py` | Inventories all `setVariable`/`getVariable` string keys (mission-owned vs third-party) for the rename sweep to verify against. | No — informational |
 
 Run from the repo root:
@@ -52,22 +52,25 @@ check and names the offending file. Baseline format: one tab-separated
 > exceed the per-file timeout are skipped and listed in the output (never
 > silently).
 
-### Updating the reference-integrity baseline
+### Reference integrity (`refcheck.py`)
 
 `refcheck.py` resolves every `CfgFunctions` mapping and `execVM`/`preprocess`/
-`#include` path. A **missing** target fails the check; a **case mismatch**
-(harmless in a packed PBO, broken on case-sensitive Linux) is a warning;
-orphan detection is limited to `fn_*` files not registered in `CfgFunctions`
-(loose scripts load via dynamic paths and can't be traced statically).
+`#include` path. It exits non-zero (**CI red**) on **any** finding — there is no
+baseline; every reference problem must be fixed to get the check green:
 
-Pre-existing broken references are recorded in `refcheck_baseline.json` so the
-gate fails only on **newly introduced** breakage. The current baseline holds two
-known-broken legacy references (`kp_fuel_consumption.sqf:17`,
-`export_template.sqf:9`). Regenerate after an intentional change:
+- a **missing** target (ERROR),
+- a **case mismatch** (WARNING — harmless in a packed PBO, broken on a
+  case-sensitive Linux server),
+- an unregistered `fn_*` function (WARNING).
 
-```bash
-python tools/refcheck.py --update-baseline
-```
+Orphan detection is limited to `fn_*` files not in `CfgFunctions`; loose scripts
+load via dynamic paths and can't be traced statically.
+
+> The current tree has 2 known-broken references (`kp_fuel_consumption.sqf:17`,
+> `export_template.sqf:9`) and 9 `GREUH` case mismatches — so `refcheck` is **red
+> until those are fixed**. (Unlike `refcheck`, the `sqf_lint` check keeps a
+> baseline: its 338 findings include sqflint's own false positives on modern
+> commands, which can't all be "fixed" — so it gates on *new* findings only.)
 
 ## Tests
 

@@ -163,12 +163,18 @@ class TestRefcheck:
         })
         assert refcheck.find_orphans(root) == []
 
-    # ---- Task 3: baseline gating (warn on legacy, fail on new) ---------
-    def test_main_gates_new_error_then_baselines_it(self, tmp_path):
+    # ---- CI gating: red on ANY issue ----------------------------------
+    def test_main_fails_on_broken_reference(self, tmp_path):
         root = self._cfg_mission(tmp_path, extra={"init.sqf": r'execVM "scripts\gone.sqf";'})
-        bl = tmp_path / "rb.json"
-        # No baseline yet -> the broken reference is a new error -> exit 1.
-        assert refcheck.main(["--root", str(root), "--baseline", str(bl)]) == 1
-        # Accept it into the baseline -> subsequent run is clean (exit 0).
-        refcheck.main(["--root", str(root), "--baseline", str(bl), "--update-baseline"])
-        assert refcheck.main(["--root", str(root), "--baseline", str(bl)]) == 0
+        assert refcheck.main(["--root", str(root)]) == 1
+
+    def test_main_fails_on_case_mismatch_warning(self, tmp_path):
+        # Even a warning makes CI red — "red on any issue".
+        root = self._cfg_mission(tmp_path, extra={
+            "GREUH/Scripts/a.sqf": "",
+            "init.sqf": r'execVM "GREUH\scripts\a.sqf";',
+        })
+        assert refcheck.main(["--root", str(root)]) == 1
+
+    def test_main_passes_on_clean_tree(self, tmp_path):
+        assert refcheck.main(["--root", str(self._cfg_mission(tmp_path))]) == 0

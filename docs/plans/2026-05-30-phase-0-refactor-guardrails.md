@@ -192,5 +192,5 @@ Reference-pattern volumes to scan (string literals in `*.sqf/*.hpp/*.ext`): `exe
 - **Two real latent bugs found by `refcheck` (baselined, NOT fixed — Phase 0 changes no gameplay code):**
   1. `scripts/client/misc/kp_fuel_consumption.sqf:17` — a `GetInMan` handler does `execVM "scripts\kp_fuel_consumption.sqf"`, but the file is at `scripts\client\misc\` (dead/superseded; `init_client.sqf` wires the working handler).
   2. `scripts/fob_templates/export_template.sqf:9` — `execVM "export_template.sqf"` (bare path) won't resolve from mission root.
-  Both are recorded in `tools/refcheck_baseline.json` and are good candidates for a later cleanup phase.
-- **refcheck baseline added:** mirrors the sqf_lint baseline (gate on *new* errors only), as anticipated by the Risk table.
+  These now make the `refcheck` CI check **red** (see gating change below); to be fixed in a follow-up.
+- **refcheck gating (changed post-verification, per user request):** the initial baseline (gate on *new* errors only) was replaced with **fail on any finding** (error or warning) so CI goes red on every reference problem; `refcheck_baseline.json` was removed. `sqf_lint` keeps its baseline — its 338 findings include sqflint's own false positives on modern commands (`findIf` …), which can't all be "fixed", so it gates on *new* findings only.
