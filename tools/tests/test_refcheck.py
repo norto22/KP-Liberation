@@ -143,6 +143,21 @@ class TestRefcheck:
         scan = refcheck.scan_references(root)
         assert [f for f in scan if f.severity == "error"] == []
 
+    def test_scan_ignores_references_inside_comments(self, tmp_path):
+        # Commented / example execVM paths (e.g. in a usage docblock) are not refs.
+        root = self._cfg_mission(tmp_path, extra={
+            "a.sqf": '// execVM "scripts\\line_nope.sqf";\n'
+                     '/* preprocessFile "scripts\\block_nope.sqf"; */',
+        })
+        assert [f for f in refcheck.scan_references(root) if f.severity == "error"] == []
+
+    def test_scan_still_flags_real_ref_beside_a_comment(self, tmp_path):
+        root = self._cfg_mission(tmp_path, extra={
+            "a.sqf": '// a leading comment\nexecVM "scripts\\gone.sqf";',
+        })
+        errs = [f.ref for f in refcheck.scan_references(root) if f.severity == "error"]
+        assert any("gone.sqf" in r for r in errs)
+
     # ---- Task 3: orphan detection -------------------------------------
     def test_orphan_unregistered_fn_is_flagged(self, tmp_path):
         root = self._cfg_mission(tmp_path, extra={"functions/fn_ghost.sqf": ""})

@@ -68,6 +68,60 @@ def resolve_mission_path(root: Path, raw: str) -> Resolution:
     return Resolution(True, False, "/".join(real_parts))
 
 
+def _strip_comments(text: str) -> str:
+    """Remove ``//`` and ``/* */`` comments, preserving string literals/newlines.
+
+    The scanners are regex-based, so a commented-out or example ``execVM "..."``
+    (e.g. in a file's usage docblock) must not be treated as a real reference.
+    """
+    out: list[str] = []
+    i, n = 0, len(text)
+    state = "code"
+    quote = ""
+    while i < n:
+        c = text[i]
+        nxt = text[i + 1] if i + 1 < n else ""
+        if state == "code":
+            if c in ('"', "'"):
+                state, quote = "string", c
+                out.append(c)
+                i += 1
+            elif c == "/" and nxt == "/":
+                state, i = "line", i + 2
+            elif c == "/" and nxt == "*":
+                state, i = "block", i + 2
+            else:
+                out.append(c)
+                i += 1
+        elif state == "string":
+            out.append(c)
+            if c == quote and nxt == quote:  # doubled quote = escaped, stays in string
+                out.append(nxt)
+                i += 2
+            elif c == quote:
+                state, i = "code", i + 1
+            else:
+                i += 1
+        elif state == "line":
+            if c == "\n":
+                out.append(c)
+                state = "code"
+            i += 1
+        else:  # block
+            if c == "*" and nxt == "/":
+                state, i = "code", i + 2
+            else:
+                if c == "\n":
+                    out.append(c)
+                i += 1
+    return "".join(out)
+
+
+def _read_stripped(path: Path) -> str:
+    """Read a file with comments removed, so commented refs aren't scanned."""
+    return _strip_comments(path.read_text(errors="replace"))
+
+
 # ---- CfgFunctions parsing ---------------------------------------------------
 
 _TOKEN_RE = re.compile(
@@ -138,7 +192,7 @@ def _walk(tokens: Iterator[re.Match[str]], stack: list[_Frame], root: Path,
         elif m.group("inc") is not None:
             inc_path = resolve_mission_path(root, m.group("inc"))
             if inc_path.real is not None:
-                inc_text = (root / inc_path.real).read_text(errors="replace")
+                inc_text = _read_stripped(root / inc_path.real)
                 _walk(_TOKEN_RE.finditer(inc_text), stack, root, entries)
 
 
@@ -159,7 +213,7 @@ def cfgfunctions_entries(root: Path) -> list[tuple[str, str]]:
     desc = root / "description.ext"
     if not desc.exists():
         return []
-    body = _slice_cfgfunctions_block(desc.read_text(errors="replace"))
+    body = _slice_cfgfunctions_block(_read_stripped(desc))
     entries: list[tuple[str, str]] = []
     _walk(_TOKEN_RE.finditer(body), [_Frame("CfgFunctions")], root, entries)
     return entries
@@ -196,7 +250,7 @@ def _iter_references(root: Path) -> Iterator[tuple[str, str, str]]:
         if not path.is_file() or path.suffix.lower() not in _SCANNED_EXTS:
             continue
         source = path.relative_to(root).as_posix()
-        text = path.read_text(errors="replace")
+        text = _read_stripped(path)
         for m in _LOAD_RE.finditer(text):
             yield (m.group(1), source, "reference")
         for m in _INCLUDE_RE.finditer(text):

@@ -66,11 +66,12 @@ baseline; every reference problem must be fixed to get the check green:
 Orphan detection is limited to `fn_*` files not in `CfgFunctions`; loose scripts
 load via dynamic paths and can't be traced statically.
 
-> The current tree has 2 known-broken references (`kp_fuel_consumption.sqf:17`,
-> `export_template.sqf:9`) and 9 `GREUH` case mismatches — so `refcheck` is **red
-> until those are fixed**. (Unlike `refcheck`, the `sqf_lint` check keeps a
-> baseline: its 338 findings include sqflint's own false positives on modern
-> commands, which can't all be "fixed" — so it gates on *new* findings only.)
+> `refcheck` is **green** on the current tree. It strips `//` and `/* */`
+> comments before scanning, so commented-out / example `execVM` paths in
+> docblocks are not treated as references. Unlike `refcheck`, the `sqf_lint`
+> check keeps a baseline: its 338 findings include sqflint's own false positives
+> on modern commands, which can't all be "fixed" — so it gates on *new* findings
+> only.
 
 ## Tests
 
