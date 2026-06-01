@@ -229,7 +229,6 @@ class CfgDiscordRichPresence {
 
 class CfgFunctions {
     #include "CfgFunctions.hpp"
-    #include "KP\KPPLM\KPPLM_functions.hpp"
 };
 
 class CfgRespawnTemplates {
@@ -237,14 +236,13 @@ class CfgRespawnTemplates {
 };
 
 class CfgTaskDescriptions {
-    #include "scripts\client\tutorial\CfgTaskDescriptions.hpp"
+    #include "SCRIPTS\CLIENT\TUTORIAL\CfgTaskDescriptions.hpp"
 };
 
-#include "ui\liberation_interface.hpp"
-#include "ui\liberation_notifications.hpp"
-#include "ui\mission_params.hpp"
+#include "UI\liberation_interface.hpp"
+#include "UI\liberation_notifications.hpp"
+#include "UI\mission_params.hpp"
 
 #include "GREUH\UI\GREUH_interface.hpp"
-#include "KP\KPGUI\KPGUI_defines.hpp"
-#include "KP\KPPLM\ui\KPPLM_dialog.hpp"
-
+#include "KP\GUI\defines.hpp"
+#include "KP\LOADOUT_MANAGER\UI\dialog.hpp"

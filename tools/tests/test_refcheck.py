@@ -3,6 +3,7 @@
 Single test class per the parsimony rule. Fixtures build a minimal mission
 tree in tmp_path so resolution is exercised against real files, not mocks.
 """
+
 # pytest fixtures (tmp_path) are untyped; relax this module.
 # Sibling modules are importable via conftest's sys.path injection (not visible to static analysis).
 # pyright: basic, reportMissingImports=false
@@ -45,12 +46,12 @@ class TestRefcheck:
     _DESC = 'class CfgFunctions {\n    #include "CfgFunctions.hpp"\n};\n'
     _CFG = (
         "class KPLIB {\n"
-        '    class functions {\n'
+        "    class functions {\n"
         '        file = "functions";\n'
         "        class doThing {};\n"
         '        class viaFsm { ext = ".fsm"; };\n'
         "    };\n"
-        '    class functions_curator {\n'
+        "    class functions_curator {\n"
         '        file = "functions\\curator";\n'
         "        class initStuff {};\n"
         "    };\n"
@@ -92,21 +93,24 @@ class TestRefcheck:
         desc = 'class CfgFunctions {\n    #include "CfgFunctions.hpp"\n};\n'
         cfg = (
             "class KPLIB {\n"
-            '    class g {\n'
+            "    class g {\n"
             '        file = "functions";\n'
             '        class fullPath { file = "scripts\\a\\my.sqf"; };\n'
             '        class dirForm { file = "scripts\\b"; };\n'
             "    };\n"
             "};\n"
         )
-        root = _mission(tmp_path, {
-            "description.ext": desc,
-            "CfgFunctions.hpp": cfg,
-            "scripts/a/my.sqf": "",
-            "scripts/b/fn_dirForm.sqf": "",
-        })
+        root = _mission(
+            tmp_path,
+            {
+                "description.ext": desc,
+                "CfgFunctions.hpp": cfg,
+                "scripts/a/my.sqf": "",
+                "scripts/b/fn_dirForm.sqf": "",
+            },
+        )
         entries = dict(refcheck.cfgfunctions_entries(root))
-        assert entries["fullPath"] == "scripts/a/my.sqf"        # full-path override
+        assert entries["fullPath"] == "scripts/a/my.sqf"  # full-path override
         assert entries["dirForm"] == "scripts/b/fn_dirForm.sqf"  # dir-style override
 
     def test_cfgfunctions_missing_file_is_error(self, tmp_path):
@@ -119,42 +123,57 @@ class TestRefcheck:
 
     # ---- Task 3: path-reference scanning ------------------------------
     def test_scan_reference_missing_is_error(self, tmp_path):
-        root = self._cfg_mission(tmp_path, extra={
-            "init.sqf": r'execVM "scripts\nope\missing.sqf";',
-        })
+        root = self._cfg_mission(
+            tmp_path,
+            extra={
+                "init.sqf": r'execVM "scripts\nope\missing.sqf";',
+            },
+        )
         errors = [f for f in refcheck.scan_references(root) if f.severity == "error"]
         assert any("missing.sqf" in f.ref for f in errors)
 
     def test_scan_reference_case_mismatch_is_warning(self, tmp_path):
         # On-disk GREUH/Scripts/a.sqf; referenced lowercase via preprocessFile.
-        root = self._cfg_mission(tmp_path, extra={
-            "GREUH/Scripts/a.sqf": "",
-            "init.sqf": r'_x = preprocessFileLineNumbers "GREUH\scripts\a.sqf";',
-        })
+        root = self._cfg_mission(
+            tmp_path,
+            extra={
+                "GREUH/Scripts/a.sqf": "",
+                "init.sqf": r'_x = preprocessFileLineNumbers "GREUH\scripts\a.sqf";',
+            },
+        )
         scan = refcheck.scan_references(root)
         assert [f for f in scan if f.severity == "error"] == []
         assert any(f.severity == "warning" and "a.sqf" in f.ref for f in scan)
 
     def test_scan_reference_existing_include_is_clean(self, tmp_path):
-        root = self._cfg_mission(tmp_path, extra={
-            "ui/dialog.hpp": "",
-            "description.ext": self._DESC + '#include "ui\\dialog.hpp"\n',
-        })
+        root = self._cfg_mission(
+            tmp_path,
+            extra={
+                "ui/dialog.hpp": "",
+                "description.ext": self._DESC + '#include "ui\\dialog.hpp"\n',
+            },
+        )
         scan = refcheck.scan_references(root)
         assert [f for f in scan if f.severity == "error"] == []
 
     def test_scan_ignores_references_inside_comments(self, tmp_path):
         # Commented / example execVM paths (e.g. in a usage docblock) are not refs.
-        root = self._cfg_mission(tmp_path, extra={
-            "a.sqf": '// execVM "scripts\\line_nope.sqf";\n'
-                     '/* preprocessFile "scripts\\block_nope.sqf"; */',
-        })
+        root = self._cfg_mission(
+            tmp_path,
+            extra={
+                "a.sqf": '// execVM "scripts\\line_nope.sqf";\n'
+                '/* preprocessFile "scripts\\block_nope.sqf"; */',
+            },
+        )
         assert [f for f in refcheck.scan_references(root) if f.severity == "error"] == []
 
     def test_scan_still_flags_real_ref_beside_a_comment(self, tmp_path):
-        root = self._cfg_mission(tmp_path, extra={
-            "a.sqf": '// a leading comment\nexecVM "scripts\\gone.sqf";',
-        })
+        root = self._cfg_mission(
+            tmp_path,
+            extra={
+                "a.sqf": '// a leading comment\nexecVM "scripts\\gone.sqf";',
+            },
+        )
         errs = [f.ref for f in refcheck.scan_references(root) if f.severity == "error"]
         assert any("gone.sqf" in r for r in errs)
 
@@ -172,10 +191,13 @@ class TestRefcheck:
     def test_orphan_only_checks_fn_files(self, tmp_path):
         # Loose (non-fn_) scripts are out of scope — they load via dynamic paths,
         # so even an unreferenced one must not be flagged.
-        root = self._cfg_mission(tmp_path, extra={
-            "scripts/loose_unreferenced.sqf": "",
-            "initPlayerLocal.sqf": "",
-        })
+        root = self._cfg_mission(
+            tmp_path,
+            extra={
+                "scripts/loose_unreferenced.sqf": "",
+                "initPlayerLocal.sqf": "",
+            },
+        )
         assert refcheck.find_orphans(root) == []
 
     # ---- CI gating: red on ANY issue ----------------------------------
@@ -185,10 +207,13 @@ class TestRefcheck:
 
     def test_main_fails_on_case_mismatch_warning(self, tmp_path):
         # Even a warning makes CI red — "red on any issue".
-        root = self._cfg_mission(tmp_path, extra={
-            "GREUH/Scripts/a.sqf": "",
-            "init.sqf": r'execVM "GREUH\scripts\a.sqf";',
-        })
+        root = self._cfg_mission(
+            tmp_path,
+            extra={
+                "GREUH/Scripts/a.sqf": "",
+                "init.sqf": r'execVM "GREUH\scripts\a.sqf";',
+            },
+        )
         assert refcheck.main(["--root", str(root)]) == 1
 
     def test_main_passes_on_clean_tree(self, tmp_path):

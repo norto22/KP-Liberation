@@ -6,10 +6,8 @@
 > guards code quality. They are independent toolchains.
 
 These checks run entirely off the source files — **no Arma 3 engine required** —
-so they work locally and in CI. They exist to make the upcoming codebase
-tidy-up (especially the full `KPLIB_` namespace sweep) verifiable mechanically:
-CI turns red only on *newly introduced* breakage, never on pre-existing legacy
-quirks.
+so they work locally and in CI. They exist to keep the codebase tidy after the `KPLIB_` namespace unification sweep and make future renames verifiable mechanically:
+CI turns red only on *newly introduced* breakage, never on pre-existing legacy quirks.
 
 ## Setup
 
@@ -23,7 +21,9 @@ pip install -r tools/requirements.txt
 |--------|--------------|-----------|
 | `sqf_lint.py` | Runs the `sqflint` analyzer over every `Missionframework/**/*.sqf`; fails only on findings **not** in the committed baseline. | Yes — on *new* findings |
 | `refcheck.py` | Resolves every `CfgFunctions` class→file mapping and every `execVM`/`preprocessFile`/`#include` path; flags broken references and orphan files. | Yes — on **any** error or warning |
-| `namespace_keys.py` | Inventories all `setVariable`/`getVariable` string keys (mission-owned vs third-party) for the rename sweep to verify against. | No — informational |
+| `namespace_keys.py` | Inventories all `setVariable`/`getVariable` string keys (now all `KPLIB_`-prefixed) and pairs writers with readers. | No — informational |
+| `sweep.py` | Rename-sweep engine used for the namespace unification (Pass A dir recase, Pass B module renames, Pass C identifier unification). | No — one-shot tool |
+| `rename_map.py` | Explicit rename map and exclusion table consumed by `sweep.py`. | No — data module |
 
 Run from the repo root:
 

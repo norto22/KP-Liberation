@@ -5165,7 +5165,7 @@
             <Korean>모든 사용자</Korean>
             <Czech>Kdokoliv</Czech>
         </Key>
-        <Key ID="STR_GREUH_EXTENDED_OPTIONS_ACTIONMENU">
+        <Key ID="STR_KPLIB_GREUH_EXTENDED_OPTIONS_ACTIONMENU">
             <Original>-- Extended Options --</Original>
             <German>-- Erweiterte Optionen --</German>
             <Spanish>-- Opciones extendidas --</Spanish>
@@ -5178,7 +5178,7 @@
             <Korean>-- 확장 옵션 --</Korean>
             <Czech>-- Rozšířené Možnosti --</Czech>
         </Key>
-        <Key ID="STR_GREUH_EXTENDED_OPTIONS">
+        <Key ID="STR_KPLIB_GREUH_EXTENDED_OPTIONS">
             <Original>Extended Options</Original>
             <German>Erweiterte Optionen</German>
             <Spanish>Opciones Extendidas</Spanish>
@@ -5191,7 +5191,7 @@
             <Korean>추가 설정</Korean>
             <Czech>Rozšířené Možnosti</Czech>
         </Key>
-        <Key ID="STR_GREUH_DISABLED">
+        <Key ID="STR_KPLIB_GREUH_DISABLED">
             <Original>- disabled -</Original>
             <German>- deaktiviert -</German>
             <Spanish>- desabilitado -</Spanish>
@@ -5204,7 +5204,7 @@
             <Korean>- 비활성화 -</Korean>
             <Czech>- vypnuto -</Czech>
         </Key>
-        <Key ID="STR_GREUH_SQUAD_MANAGEMENT">
+        <Key ID="STR_KPLIB_GREUH_SQUAD_MANAGEMENT">
             <Original>Squad Management</Original>
             <German>Truppmanagement</German>
             <Spanish>Manejo de escuadras</Spanish>
@@ -5217,7 +5217,7 @@
             <Korean>분대 관리</Korean>
             <Czech>Správa Družstva</Czech>
         </Key>
-        <Key ID="STR_GREUH_JOIN">
+        <Key ID="STR_KPLIB_GREUH_JOIN">
             <Original>Join</Original>
             <German>Beitreten</German>
             <Spanish>Unirse</Spanish>
@@ -5230,7 +5230,7 @@
             <Korean>참가</Korean>
             <Czech>Přidat se</Czech>
         </Key>
-        <Key ID="STR_GREUH_CREATE">
+        <Key ID="STR_KPLIB_GREUH_CREATE">
             <Original>Create</Original>
             <German>Erstellen</German>
             <Spanish>Crear</Spanish>
@@ -5243,7 +5243,7 @@
             <Korean>만들기</Korean>
             <Czech>Vytvořit</Czech>
         </Key>
-        <Key ID="STR_GREUH_RENAME">
+        <Key ID="STR_KPLIB_GREUH_RENAME">
             <Original>Rename</Original>
             <German>Umbenennen</German>
             <Spanish>Renombrar</Spanish>
@@ -5256,7 +5256,7 @@
             <Korean>이름변경</Korean>
             <Czech>Přejmenovat</Czech>
         </Key>
-        <Key ID="STR_GREUH_LEADER">
+        <Key ID="STR_KPLIB_GREUH_LEADER">
             <Original>Leader</Original>
             <German>Anführer</German>
             <Spanish>Lider</Spanish>
@@ -5269,7 +5269,7 @@
             <Korean>분대장위임</Korean>
             <Czech>Velitel</Czech>
         </Key>
-        <Key ID="STR_GREUH_CANCEL">
+        <Key ID="STR_KPLIB_GREUH_CANCEL">
             <Original>Cancel</Original>
             <German>Abbrechen</German>
             <Spanish>Cancelar</Spanish>
@@ -5282,7 +5282,7 @@
             <Korean>취소</Korean>
             <Czech>Zrušit</Czech>
         </Key>
-        <Key ID="STR_GREUH_CHOOSE">
+        <Key ID="STR_KPLIB_GREUH_CHOOSE">
             <Original>Choose</Original>
             <German>Wählen</German>
             <Spanish>Elegir</Spanish>
@@ -5295,7 +5295,7 @@
             <Korean>선택</Korean>
             <Czech>Vybrat</Czech>
         </Key>
-        <Key ID="STR_GREUH_PLATOON_SQUAD_AWARENESS">
+        <Key ID="STR_KPLIB_GREUH_PLATOON_SQUAD_AWARENESS">
             <Original>Platoon and Squad Awareness</Original>
             <German>Sichthilfen und Kartenmarkierungen</German>
             <Spanish>Mostrar ubicación de Pelotón y Escuadra en el mapa</Spanish>
@@ -5308,7 +5308,7 @@
             <Korean>분대 추가 기능 설정</Korean>
             <Czech>Ostražitost Týmů a Družstev</Czech>
         </Key>
-        <Key ID="STR_GREUH_SHOW_PLATOON_OVERLAY">
+        <Key ID="STR_KPLIB_GREUH_SHOW_PLATOON_OVERLAY">
             <Original>Show platoon overlay:</Original>
             <German>Platoon Overlay:</German>
             <Spanish>Indicador de pelotón</Spanish>
@@ -5321,7 +5321,7 @@
             <Korean>아군 분대명 보이기 설정:</Korean>
             <Czech>Zobrazit přehled družstev:</Czech>
         </Key>
-        <Key ID="STR_GREUH_ACTIVE">
+        <Key ID="STR_KPLIB_GREUH_ACTIVE">
             <Original>active</Original>
             <German>aktiv</German>
             <Spanish>activo</Spanish>
@@ -5334,7 +5334,7 @@
             <Korean>활성화</Korean>
             <Czech>aktivní</Czech>
         </Key>
-        <Key ID="STR_GREUH_SHOW_PLAYER_NAMETAGS">
+        <Key ID="STR_KPLIB_GREUH_SHOW_PLAYER_NAMETAGS">
             <Original>Show player nametags:</Original>
             <German>Spielernamen:</German>
             <Spanish>Mostrar nombres de jugadores</Spanish>
@@ -5347,7 +5347,7 @@
             <Korean>아군 플레이어 이름 보이기 설정:</Korean>
             <Czech>Zobrazit hráčské jmenovky:</Czech>
         </Key>
-        <Key ID="STR_GREUH_YES">
+        <Key ID="STR_KPLIB_GREUH_YES">
             <Original>Yes</Original>
             <German>Ja</German>
             <Spanish>Sí</Spanish>
@@ -5360,7 +5360,7 @@
             <Korean>예</Korean>
             <Czech>Ano</Czech>
         </Key>
-        <Key ID="STR_GREUH_NO">
+        <Key ID="STR_KPLIB_GREUH_NO">
             <Original>No</Original>
             <German>Nein</German>
             <Spanish>No</Spanish>
@@ -5373,7 +5373,7 @@
             <Korean>아니요</Korean>
             <Czech>Ne</Czech>
         </Key>
-        <Key ID="STR_GREUH_ADJUST_VIEW_DISTANCE">
+        <Key ID="STR_KPLIB_GREUH_ADJUST_VIEW_DISTANCE">
             <Original>Adjust View Distance</Original>
             <German>Sichtweite ändern</German>
             <Spanish>Ajustar distancia de visión</Spanish>
@@ -5386,7 +5386,7 @@
             <Korean>가시거리 설정</Korean>
             <Czech>Přizpůsobit Dohled</Czech>
         </Key>
-        <Key ID="STR_GREUH_VIEW_DISTANCE">
+        <Key ID="STR_KPLIB_GREUH_VIEW_DISTANCE">
             <Original>View Distance</Original>
             <German>Sichtweite</German>
             <Spanish>Distancia de Visión</Spanish>
@@ -5399,7 +5399,7 @@
             <Korean>가시거리</Korean>
             <Czech>Dohled</Czech>
         </Key>
-        <Key ID="STR_GREUH_INFANTRY">
+        <Key ID="STR_KPLIB_GREUH_INFANTRY">
             <Original>Infantry</Original>
             <German>Infanterie</German>
             <Spanish>Infantería</Spanish>
@@ -5412,7 +5412,7 @@
             <Korean>보병</Korean>
             <Czech>Pěchota</Czech>
         </Key>
-        <Key ID="STR_GREUH_VEHICLES">
+        <Key ID="STR_KPLIB_GREUH_VEHICLES">
             <Original>Vehicles</Original>
             <German>Fahrzeuge</German>
             <Spanish>Vehículos</Spanish>
@@ -5425,7 +5425,7 @@
             <Korean>차량</Korean>
             <Czech>Vozidlo</Czech>
         </Key>
-        <Key ID="STR_GREUH_OBJECTS">
+        <Key ID="STR_KPLIB_GREUH_OBJECTS">
             <Original>Objects</Original>
             <German>Objekte</German>
             <Spanish>Objetos</Spanish>
@@ -5438,7 +5438,7 @@
             <Korean>사물</Korean>
             <Czech>Objekty</Czech>
         </Key>
-        <Key ID="STR_GREUH_ADJUST_VIEW_DISTANCE_TO_KEEP_FPS_ABOVE">
+        <Key ID="STR_KPLIB_GREUH_ADJUST_VIEW_DISTANCE_TO_KEEP_FPS_ABOVE">
             <Original>Adjust view distance to keep FPS above</Original>
             <German>Automatische Sichtweite für FPS über</German>
             <Spanish>Ajustar distancia de visión para mantener FPS arriba de</Spanish>
@@ -5451,7 +5451,7 @@
             <Korean>설정한 프레임에 맞게 시야거리 조절</Korean>
             <Czech>Přizpůsobit dohled k zachování FPS nad</Czech>
         </Key>
-        <Key ID="STR_GREUH_ADJUST_TERRAIN_DETAILS">
+        <Key ID="STR_KPLIB_GREUH_ADJUST_TERRAIN_DETAILS">
             <Original>Adjust Terrain Details</Original>
             <German>Landschaftdetails</German>
             <Spanish>Ajustar detalle de terreno</Spanish>
@@ -5464,7 +5464,7 @@
             <Korean>지형 그래픽 설정</Korean>
             <Czech>Přizpůsobit detaily terénu</Czech>
         </Key>
-        <Key ID="STR_GREUH_VERY_LOW">
+        <Key ID="STR_KPLIB_GREUH_VERY_LOW">
             <Original>Very Low</Original>
             <German>Sehr niedrig</German>
             <Spanish>Muy bajo</Spanish>
@@ -5477,7 +5477,7 @@
             <Korean>매우 낮음</Korean>
             <Czech>Velmi nízké</Czech>
         </Key>
-        <Key ID="STR_GREUH_LOW">
+        <Key ID="STR_KPLIB_GREUH_LOW">
             <Original>Low</Original>
             <German>Niedrig</German>
             <Spanish>Bajo</Spanish>
@@ -5490,7 +5490,7 @@
             <Korean>낮음</Korean>
             <Czech>Nízké</Czech>
         </Key>
-        <Key ID="STR_GREUH_NORMAL">
+        <Key ID="STR_KPLIB_GREUH_NORMAL">
             <Original>Normal</Original>
             <German>Normal</German>
             <Spanish>Normal</Spanish>
@@ -5503,7 +5503,7 @@
             <Korean>보통</Korean>
             <Czech>Normální</Czech>
         </Key>
-        <Key ID="STR_GREUH_HIGH">
+        <Key ID="STR_KPLIB_GREUH_HIGH">
             <Original>High</Original>
             <German>Hoch</German>
             <Spanish>Alto</Spanish>
@@ -5516,7 +5516,7 @@
             <Korean>높음</Korean>
             <Czech>Vysoké</Czech>
         </Key>
-        <Key ID="STR_GREUH_SHOW_TEAMMATES_ON_MAP">
+        <Key ID="STR_KPLIB_GREUH_SHOW_TEAMMATES_ON_MAP">
             <Original>Show teammates on map:</Original>
             <German>Truppmitglieder auf Karte:</German>
             <Spanish>Mostrar compañeros en el mapa:</Spanish>
@@ -5529,7 +5529,7 @@
             <Korean>지도에 아군 플레이어 표시 설정:</Korean>
             <Czech>Zobrazit spoluhráče na mapě:</Czech>
         </Key>
-        <Key ID="STR_GREUH_INVEHICLE_SOUND_VOLUME">
+        <Key ID="STR_KPLIB_GREUH_INVEHICLE_SOUND_VOLUME">
             <Original>In-Vehicle Sound Volume</Original>
             <German>Fahrzeug Innenlautstärke</German>
             <Spanish>Volumen del sonido dentro del vehículo</Spanish>
@@ -5542,7 +5542,7 @@
             <Korean>차량 탑승시 소리크기 설정</Korean>
             <Czech>Hlasitost ve vozidle</Czech>
         </Key>
-        <Key ID="STR_GREUH_TEST">
+        <Key ID="STR_KPLIB_GREUH_TEST">
             <Original>Test</Original>
             <German>Test</German>
             <Spanish>Prueba</Spanish>
@@ -5555,7 +5555,7 @@
             <Korean>실험</Korean>
             <Czech>Test</Czech>
         </Key>
-        <Key ID="STR_GREUH_RESPAWN">
+        <Key ID="STR_KPLIB_GREUH_RESPAWN">
             <Original>Respawn</Original>
             <German>Respawn</German>
             <Spanish>Reaparecer</Spanish>
@@ -5568,7 +5568,7 @@
             <Korean>재생</Korean>
             <Czech>Respawn</Czech>
         </Key>
-        <Key ID="STR_GREUH_REPLACE_NEAREST_AI">
+        <Key ID="STR_KPLIB_GREUH_REPLACE_NEAREST_AI">
             <Original>Replace nearest AI</Original>
             <German>Ersetze nächste KI</German>
             <Spanish>Reemplazar IA más cercano</Spanish>
@@ -7024,7 +7024,7 @@
     </Package>
 
     <Package name="KPPLM">
-        <Key ID="STR_KPPLM_ACTIONOPEN">
+        <Key ID="STR_KPLIB_ACTIONOPEN">
             <English>-- KP Player Menu --</English>
             <Chinese>-- KP 玩家選單 --</Chinese>
             <Spanish>-- Menú de Jugador KP --</Spanish>
@@ -7032,7 +7032,7 @@
             <Portuguese>-- KP Menu do Jogador --</Portuguese>
             <Czech>-- KP Player Nabídka --</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TITLE">
+        <Key ID="STR_KPLIB_TITLE">
             <English>KP Player Menu</English>
             <Chinese>KP 玩家選單</Chinese>
             <Spanish>Menú de Jugador KP</Spanish>
@@ -7040,7 +7040,7 @@
             <Portuguese>KP Menu do Jogador</Portuguese>
             <Czech>KP Player Nabídka</Czech>
         </Key>
-        <Key ID="STR_KPPLM_LABELPLAYER">
+        <Key ID="STR_KPLIB_LABELPLAYER">
             <English>Player Information</English>
             <Chinese>玩家資訊</Chinese>
             <Spanish>Información de Jugador</Spanish>
@@ -7048,7 +7048,7 @@
             <Portuguese>Informação do Jogador</Portuguese>
             <Czech>Informace o hráči</Czech>
         </Key>
-        <Key ID="STR_KPPLM_RANK">
+        <Key ID="STR_KPLIB_RANK">
             <English>Rank:</English>
             <Chinese>階級</Chinese>
             <Spanish>Rango:</Spanish>
@@ -7056,7 +7056,7 @@
             <Portuguese>Rank:</Portuguese>
             <Czech>Hodnost:</Czech>
         </Key>
-        <Key ID="STR_KPPLM_SCORE">
+        <Key ID="STR_KPLIB_SCORE">
             <English>Score:</English>
             <Chinese>得分</Chinese>
             <Spanish>Puntaje:</Spanish>
@@ -7064,7 +7064,7 @@
             <Portuguese>Pontuação:</Portuguese>
             <Czech>Skóre:</Czech>
         </Key>
-        <Key ID="STR_KPPLM_PLAYTIME">
+        <Key ID="STR_KPLIB_PLAYTIME">
             <English>Playtime:</English>
             <Chinese>遊戲時間</Chinese>
             <Spanish>Tiempo de juego:</Spanish>
@@ -7072,7 +7072,7 @@
             <Portuguese>Tempo de jogo:</Portuguese>
             <Czech>Čas hraní:</Czech>
         </Key>
-        <Key ID="STR_KPPLM_NORANKS">
+        <Key ID="STR_KPLIB_NORANKS">
             <English>KP Ranks mod not loaded</English>
             <Chinese>KP Ranks 模組未裝載</Chinese>
             <Spanish>KP Ranks mod no ha sido cargado</Spanish>
@@ -7080,7 +7080,7 @@
             <Portuguese>O mod KP Ranks não está carregado</Portuguese>
             <Czech>KP Ranks mod nebyl načten</Czech>
         </Key>
-        <Key ID="STR_KPPLM_LABELGROUPS">
+        <Key ID="STR_KPLIB_LABELGROUPS">
             <English>Group Management</English>
             <Chinese>團隊管理</Chinese>
             <Spanish>Administración de grupo</Spanish>
@@ -7088,14 +7088,14 @@
             <Portuguese>Gerenciar Grupo</Portuguese>
             <Czech>Správa skupiny</Czech>
         </Key>
-        <Key ID="STR_KPPLM_CREATE">
+        <Key ID="STR_KPLIB_CREATE">
             <English>Create</English>
             <German>Erstellen</German>
             <Spanish>Crear</Spanish>
             <Portuguese>Criar</Portuguese>
             <Czech>Vytvořit</Czech>
         </Key>
-        <Key ID="STR_KPPLM_JOIN">
+        <Key ID="STR_KPLIB_JOIN">
             <English>Join</English>
             <Chinese>加入</Chinese>
             <Spanish>Unirse</Spanish>
@@ -7103,7 +7103,7 @@
             <Portuguese>Juntar-se</Portuguese>
             <Czech>Připojit se</Czech>
         </Key>
-        <Key ID="STR_KPPLM_RENAME">
+        <Key ID="STR_KPLIB_RENAME">
             <English>Rename</English>
             <Chinese>重新命名</Chinese>
             <Spanish>Renombrar</Spanish>
@@ -7111,7 +7111,7 @@
             <Portuguese>Renomear</Portuguese>
             <Czech>Přejmenovat</Czech>
         </Key>
-        <Key ID="STR_KPPLM_LABELVIEW">
+        <Key ID="STR_KPLIB_LABELVIEW">
             <English>View Distance Settings</English>
             <Chinese>視距設定</Chinese>
             <Spanish>Configuración de distancia de visión</Spanish>
@@ -7119,7 +7119,7 @@
             <Portuguese>Distância de Visão</Portuguese>
             <Czech>Nastavení vzdálenosti</Czech>
         </Key>
-        <Key ID="STR_KPPLM_VIEWFOOT">
+        <Key ID="STR_KPLIB_VIEWFOOT">
             <English>m on foot</English>
             <Chinese>m 步兵視野</Chinese>
             <Spanish>m a pie</Spanish>
@@ -7127,7 +7127,7 @@
             <Portuguese>m A pé</Portuguese>
             <Czech>Pěšák</Czech>
         </Key>
-        <Key ID="STR_KPPLM_VIEWVEHICLE">
+        <Key ID="STR_KPLIB_VIEWVEHICLE">
             <English>m in ground vehicles</English>
             <Chinese>m 地面載具視野</Chinese>
             <Spanish>m en vehículos de tierra</Spanish>
@@ -7135,7 +7135,7 @@
             <Portuguese>m em veículos terrestres</Portuguese>
             <Czech>Vozidla</Czech>
         </Key>
-        <Key ID="STR_KPPLM_VIEWAIR">
+        <Key ID="STR_KPLIB_VIEWAIR">
             <English>m in air vehicles</English>
             <Chinese>m 空中載具視野</Chinese>
             <Spanish>m en vehículos de aire</Spanish>
@@ -7143,7 +7143,7 @@
             <Portuguese>m em veículos aéreos</Portuguese>
             <Czech>Letectvo</Czech>
         </Key>
-        <Key ID="STR_KPPLM_LABELMISC">
+        <Key ID="STR_KPLIB_LABELMISC">
             <English>Misc Settings</English>
             <Chinese>細項設定</Chinese>
             <Spanish>Configuración miscelanea</Spanish>
@@ -7151,7 +7151,7 @@
             <Portuguese>Outras Configurações</Portuguese>
             <Czech>Různé nastavení</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TEXTTERRAIN">
+        <Key ID="STR_KPLIB_TEXTTERRAIN">
             <English>Terrain detail:</English>
             <Chinese>地形細節</Chinese>
             <Spanish>Detalle de terreno:</Spanish>
@@ -7159,7 +7159,7 @@
             <Portuguese>Detalhe do terreno:</Portuguese>
             <Czech>Detail terénu:</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TERRAINLOW">
+        <Key ID="STR_KPLIB_TERRAINLOW">
             <English>Low</English>
             <Chinese>低</Chinese>
             <Spanish>Bajo</Spanish>
@@ -7167,7 +7167,7 @@
             <Portuguese>Baixo</Portuguese>
             <Czech>Nízký</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TERRAINSTANDARD">
+        <Key ID="STR_KPLIB_TERRAINSTANDARD">
             <English>Standard</English>
             <Chinese>標準</Chinese>
             <Spanish>Estandard</Spanish>
@@ -7175,7 +7175,7 @@
             <Portuguese>Padrão</Portuguese>
             <Czech>Normální</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TERRAINHIGH">
+        <Key ID="STR_KPLIB_TERRAINHIGH">
             <English>High</English>
             <Chinese>高</Chinese>
             <Spanish>Alto</Spanish>
@@ -7183,7 +7183,7 @@
             <Portuguese>Alto</Portuguese>
             <Czech>Vysoký</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TERRAINVHIGH">
+        <Key ID="STR_KPLIB_TERRAINVHIGH">
             <English>Very High</English>
             <Chinese>非常高</Chinese>
             <Spanish>Muy alto</Spanish>
@@ -7191,7 +7191,7 @@
             <Portuguese>Muito Alto</Portuguese>
             <Czech>Velmi vysoký</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TERRAINULTRA">
+        <Key ID="STR_KPLIB_TERRAINULTRA">
             <English>Ultra</English>
             <Chinese>極高</Chinese>
             <Spanish>Ultra</Spanish>
@@ -7199,7 +7199,7 @@
             <Portuguese>Ultra</Portuguese>
             <Czech>Ultra</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TEXTTPV">
+        <Key ID="STR_KPLIB_TEXTTPV">
             <English>Auto 3rd person view:</English>
             <Chinese>自動第三人稱視角</Chinese>
             <Spanish>Cámara auto 3era persona:</Spanish>
@@ -7207,7 +7207,7 @@
             <Portuguese>Câmera auto em 3º pessoa:</Portuguese>
             <Czech>Pohled z třetí osoby:</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TPDISABLED">
+        <Key ID="STR_KPLIB_TPDISABLED">
             <English>Disabled</English>
             <Chinese>關閉</Chinese>
             <Spanish>Desabilitar</Spanish>
@@ -7215,7 +7215,7 @@
             <Portuguese>Desativado</Portuguese>
             <Czech>Zakázáno</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TPVAIR">
+        <Key ID="STR_KPLIB_TPVAIR">
             <English>Air vehicles</English>
             <Chinese>空中載具</Chinese>
             <Spanish>Vehículos de aire</Spanish>
@@ -7223,7 +7223,7 @@
             <Portuguese>Veículos aéreos</Portuguese>
             <Czech>Letectvo</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TPVLAND">
+        <Key ID="STR_KPLIB_TPVLAND">
             <English>Ground vehicles</English>
             <Chinese>地面載具</Chinese>
             <Spanish>Vehículos de tierra</Spanish>
@@ -7231,7 +7231,7 @@
             <Portuguese>Veículos terrestres</Portuguese>
             <Czech>Pozemní vozidla</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TPVALL">
+        <Key ID="STR_KPLIB_TPVALL">
             <English>All vehicles</English>
             <Chinese>所有載具</Chinese>
             <Spanish>Todos los vehículos</Spanish>
@@ -7239,7 +7239,7 @@
             <Portuguese>Todos os veículos</Portuguese>
             <Czech>Všechna vozidla</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TEXTRADIO">
+        <Key ID="STR_KPLIB_TEXTRADIO">
             <English>Disable radio chatter:</English>
             <Chinese>關閉文字聊天：</Chinese>
             <Spanish>Deshabilitar conversaciones de radio:</Spanish>
@@ -7247,7 +7247,7 @@
             <Portuguese>Desativar comm's de rádio:</Portuguese>
             <Czech>Zakázat rádiový chat:</Czech>
         </Key>
-        <Key ID="STR_KPPLM_RADIONO">
+        <Key ID="STR_KPLIB_RADIONO">
             <English>No</English>
             <Chinese>否</Chinese>
             <Spanish>No</Spanish>
@@ -7255,7 +7255,7 @@
             <Portuguese>Não</Portuguese>
             <Czech>Ne</Czech>
         </Key>
-        <Key ID="STR_KPPLM_RADIOVOICE">
+        <Key ID="STR_KPLIB_RADIOVOICE">
             <English>Voice</English>
             <Chinese>只有語音通訊</Chinese>
             <Spanish>Voz</Spanish>
@@ -7263,7 +7263,7 @@
             <Portuguese>Voz</Portuguese>
             <Czech>hlas</Czech>
         </Key>
-        <Key ID="STR_KPPLM_RADIOALL">
+        <Key ID="STR_KPLIB_RADIOALL">
             <English>Voice + Chat</English>
             <Chinese>語音+文字通訊</Chinese>
             <Spanish>Voz + Chat</Spanish>
@@ -7271,7 +7271,7 @@
             <Portuguese>Voz + Chat</Portuguese>
             <Czech>Hlas + chat</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TEXTSOUND">
+        <Key ID="STR_KPLIB_TEXTSOUND">
             <English>In vehicle volume:</English>
             <Chinese>載具內音量：</Chinese>
             <Spanish>Volumen en vehículo:</Spanish>
@@ -7279,7 +7279,7 @@
             <Portuguese>Volume dentro do veículo:</Portuguese>
             <Czech>Hlasitost ve vozidle:</Czech>
         </Key>
-        <Key ID="STR_KPPLM_APPLY">
+        <Key ID="STR_KPLIB_APPLY">
             <English>Apply</English>
             <Chinese>使用</Chinese>
             <Spanish>Aplicar</Spanish>
@@ -7287,7 +7287,7 @@
             <Portuguese>Aplicar</Portuguese>
             <Czech>Potvrdit</Czech>
         </Key>
-        <Key ID="STR_KPPLM_TTSOUND">
+        <Key ID="STR_KPLIB_TTSOUND">
             <English>The sound adjustment is overwritten by ACE, if you should use it.</English>
             <Chinese>如果你有使用ACE模組，聲音設定將會被ACE的覆蓋</Chinese>
             <Spanish>Los ajustes de sonido han sido sobreescritos por ACE, si debieras usarlos.</Spanish>
@@ -7295,7 +7295,7 @@
             <Portuguese>O ajuste de som é sobrescrito pelo ACE se você usar ele.</Portuguese>
             <Czech>Úprava zvuku je přepsána ACE, pokud ji použijete.</Czech>
         </Key>
-        <Key ID="STR_KPPLM_NOTLEADER">
+        <Key ID="STR_KPLIB_NOTLEADER">
             <English>You're not the leader of this group.</English>
             <Chinese>你不是這個團隊的隊長</Chinese>
             <Spanish>No eres el líder en el grupo.</Spanish>
@@ -7303,7 +7303,7 @@
             <Portuguese>Você não é o lider desse grupo.</Portuguese>
             <Czech>Nejste vůdce této skupiny.</Czech>
         </Key>
-        <Key ID="STR_KPPLM_NOLVLSYSTEM">
+        <Key ID="STR_KPLIB_NOLVLSYSTEM">
             <English>Leveling system disabled</English>
             <Chinese>陞階系統關閉</Chinese>
             <Spanish>Sistema de niveles desactivado</Spanish>
@@ -7311,7 +7311,7 @@
             <Portuguese>Sistema de níveis desativado</Portuguese>
             <Czech>Vyrovnávací systém zakázán</Czech>
         </Key>
-        <Key ID="STR_KPPLM_VERSION">
+        <Key ID="STR_KPLIB_VERSION">
             <English>KP Player Menu v1.0.2\nby Wyqer</English>
             <German>KP Spielermenü v1.0.2\nvon Wyqer</German>
             <Spanish>Menú de Jugador KP v1.0.2\npor Wyqer</Spanish>

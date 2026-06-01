@@ -1,6 +1,6 @@
 class KPLIB {
     class functions {
-        file = "functions";
+        file = "FUNCTIONS";
 
         class addActionsFob             {};
         class addActionsPlayer          {};
@@ -86,7 +86,7 @@ class KPLIB {
         class swapInventory             {};
     };
     class functions_curator {
-        file = "functions\curator";
+        file = "FUNCTIONS\CURATOR";
 
         class initCuratorHandlers       {
             postInit = 1;
@@ -94,10 +94,11 @@ class KPLIB {
         class requestZeus               {};
     };
     class functions_ui {
-        file = "functions\ui";
+        file = "FUNCTIONS\UI";
 
         class overlayUpdateResources    {};
     };
-    #include "scripts\client\CfgFunctions.hpp"
-    #include "scripts\server\CfgFunctions.hpp"
+    #include "SCRIPTS\CLIENT\CfgFunctions.hpp"
+    #include "SCRIPTS\SERVER\CfgFunctions.hpp"
+    #include "KP\LOADOUT_MANAGER\functions.hpp"
 };

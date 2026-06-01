@@ -48,7 +48,17 @@ for (let preset of presets) {
 
         /** Copy mission.sqm to output dir */
         function missionSqmCopy () {
-            return gulp.src(mission.getMissionSqmPath())
+            let src = gulp.src(mission.getMissionSqmPath());
+
+            if (preset.playerTypes) {
+                const playerTypes = Object.getOwnPropertyNames(preset.playerTypes);
+                for (let playerType of playerTypes) {
+                    const regex = new RegExp(`(type="${playerType}")`, 'g');
+                    src = src.pipe(gulpReplace(regex, `type="${preset.playerTypes[playerType]}"`));
+                }
+            }
+
+            return src
                 .pipe(gulp.dest(mission.getOutputDir()));
         },
 

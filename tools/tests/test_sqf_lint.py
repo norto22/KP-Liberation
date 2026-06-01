@@ -3,6 +3,7 @@
 Single test class per the parsimony rule. The real `sqflint` binary is never
 invoked here — the subprocess hook is monkeypatched so the test is hermetic.
 """
+
 # pytest fixtures (tmp_path, monkeypatch, capsys) are untyped; relax this module.
 # Sibling modules are importable via conftest's sys.path injection (not visible to static analysis).
 # pyright: basic, reportMissingImports=false
@@ -15,20 +16,16 @@ class TestSqfLint:
     def test_parse_file_output_strips_position(self):
         out = '[2,15]:error:Parenthesis "[" not closed\n'
         findings = sqf_lint.parse_file_output(out, "functions/fn_x.sqf")
-        assert findings == [
-            Finding("functions/fn_x.sqf", "error", 'Parenthesis "[" not closed')
-        ]
+        assert findings == [Finding("functions/fn_x.sqf", "error", 'Parenthesis "[" not closed')]
 
     def test_parse_file_output_ignores_blank_and_noise_lines(self):
-        out = "\n[10,4]:warning:Variable \"_y\" not used\n   \nnot a finding line\n"
+        out = '\n[10,4]:warning:Variable "_y" not used\n   \nnot a finding line\n'
         findings = sqf_lint.parse_file_output(out, "a.sqf")
         assert findings == [Finding("a.sqf", "warning", 'Variable "_y" not used')]
 
     def test_parse_tolerates_leading_tab(self):
-        out = '\t[1,1]:error:boom'
-        assert sqf_lint.parse_file_output(out, "a.sqf") == [
-            Finding("a.sqf", "error", "boom")
-        ]
+        out = "\t[1,1]:error:boom"
+        assert sqf_lint.parse_file_output(out, "a.sqf") == [Finding("a.sqf", "error", "boom")]
 
     # ---- baseline round-trip ------------------------------------------
     def test_baseline_roundtrip(self, tmp_path):
@@ -76,9 +73,7 @@ class TestSqfLint:
         baseline.write_text(
             sqf_lint.format_baseline({Finding("functions/fn_a.sqf", "warning", "legacy")})
         )
-        monkeypatch.setattr(
-            sqf_lint, "_run_sqflint", lambda path: "[3,1]:warning:legacy"
-        )
+        monkeypatch.setattr(sqf_lint, "_run_sqflint", lambda path: "[3,1]:warning:legacy")
         rc = sqf_lint.main(["--root", str(root), "--baseline", str(baseline)])
         assert rc == 0
 
@@ -125,16 +120,14 @@ class TestSqfLint:
         monkeypatch.setattr(sqf_lint, "_run_sqflint", fake_run)
         rc = sqf_lint.main(["--root", str(root), "--baseline", str(baseline)])
         out = capsys.readouterr().out
-        assert "big.sqf" not in seen   # never handed to sqflint
-        assert "big.sqf" in out        # but reported as skipped
-        assert rc == 1                 # small.sqf's finding is new
+        assert "big.sqf" not in seen  # never handed to sqflint
+        assert "big.sqf" in out  # but reported as skipped
+        assert rc == 1  # small.sqf's finding is new
 
     def test_main_update_baseline_writes_current(self, tmp_path, monkeypatch):
         root = self._make_tree(tmp_path, ["a.sqf"])
         baseline = tmp_path / "baseline.txt"
         monkeypatch.setattr(sqf_lint, "_run_sqflint", lambda path: "[1,1]:warning:w")
-        rc = sqf_lint.main(
-            ["--root", str(root), "--baseline", str(baseline), "--update-baseline"]
-        )
+        rc = sqf_lint.main(["--root", str(root), "--baseline", str(baseline), "--update-baseline"])
         assert rc == 0
         assert sqf_lint.load_baseline(baseline) == {Finding("a.sqf", "warning", "w")}

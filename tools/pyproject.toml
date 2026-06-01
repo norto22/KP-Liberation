@@ -18,3 +18,4 @@ target-version = "py312"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = ["integration: tests against the live mission tree"]

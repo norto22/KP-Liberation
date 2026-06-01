@@ -14,6 +14,7 @@ Usage:
 
 See tools/README.md for how this differs from the Node build in _tools/.
 """
+
 # argparse Namespaces are dynamically typed and add_argument() returns an unused
 # Action; these strict-only lints fire only on that CLI plumbing. ("standard"
 # type-checking mode omits them too — see tools/pyproject.toml.)
@@ -36,6 +37,7 @@ class Finding(NamedTuple):
     relpath: str
     severity: str
     message: str
+
 
 # A sqflint result line, e.g.  [22,11]:warning:Local variable "_x" ...
 _LINE_RE = re.compile(r"^\s*\[\d+,\d+\]:(\w+):(.*)$")
@@ -142,17 +144,27 @@ def diff(current: set[Finding], baseline: set[Finding]) -> tuple[list[Finding], 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Baseline-gated SQF syntax linter.")
-    parser.add_argument("--root", type=Path, default=_DEFAULT_ROOT,
-                        help="Mission framework root to scan (default: Missionframework/).")
-    parser.add_argument("--baseline", type=Path, default=_DEFAULT_BASELINE,
-                        help="Baseline file path.")
-    parser.add_argument("--update-baseline", action="store_true",
-                        help="Rewrite the baseline from the current findings and exit 0.")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=_DEFAULT_ROOT,
+        help="Mission framework root to scan (default: Missionframework/).",
+    )
+    parser.add_argument(
+        "--baseline", type=Path, default=_DEFAULT_BASELINE, help="Baseline file path."
+    )
+    parser.add_argument(
+        "--update-baseline",
+        action="store_true",
+        help="Rewrite the baseline from the current findings and exit 0.",
+    )
     args = parser.parse_args(argv)
 
     current, skipped = collect_findings(args.root)
     if skipped:
-        print(f"note: {len(skipped)} file(s) not linted (exceed {MAX_FILE_BYTES} bytes or timed out):")
+        print(
+            f"note: {len(skipped)} file(s) not linted (exceed {MAX_FILE_BYTES} bytes or timed out):"
+        )
         for rel in skipped:
             print(f"  - {rel}")
 
@@ -165,7 +177,9 @@ def main(argv: list[str] | None = None) -> int:
     new, resolved = diff(current, baseline)
 
     if resolved:
-        print(f"info: {len(resolved)} baselined finding(s) no longer present (consider --update-baseline).")
+        print(
+            f"info: {len(resolved)} baselined finding(s) no longer present (consider --update-baseline)."
+        )
 
     if new:
         print(f"FAIL: {len(new)} new SQF finding(s) not in the baseline:")
