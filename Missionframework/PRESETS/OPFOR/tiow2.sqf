@@ -43,6 +43,20 @@ private _byName = {
     };
 };
 
+private _withoutName = {
+    params ["_classes", "_terms"];
+
+    _classes select {
+        private _class = toLower _x;
+        private _name = toLower getText (configFile >> "CfgVehicles" >> _x >> "displayName");
+        private _matched = false;
+        {
+            if (((_class find _x) >= 0) || {(_name find _x) >= 0}) exitWith {_matched = true};
+        } forEach _terms;
+        !_matched
+    };
+};
+
 private _withFallback = {
     params ["_classes", "_fallback"];
     if (_classes isEqualTo []) exitWith {_fallback};
@@ -64,8 +78,9 @@ private _eastMen = (_tiowVehicleConfigs select {((getNumber (_x >> "side")) == 0
 private _eastVehicles = (_tiowVehicleConfigs select {((getNumber (_x >> "side")) == 0) && {!((configName _x) isKindOf "CAManBase")}}) apply {configName _x};
 
 private _orkMen = [_eastMen, ["ork", "gretchin", "stormboy", "nob", "boy", "shoota", "slugga", "mek", "painboy"]] call _byName;
-private _enemyMen = (_orkMen + _eastMen) arrayIntersect (_orkMen + _eastMen);
-_enemyMen = [_enemyMen, ["O_Soldier_lite_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_medic_F", "O_engineer_F", "O_Soldier_AT_F", "O_Soldier_AA_F"]] call _withFallback;
+_orkMen = [_orkMen, ["cadian", "krieg", "dkok", "guardsman", "imperial guard", "tau", "necron", "renegade", "cultist"]] call _withoutName;
+private _enemyMen = [_orkMen, ["O_Soldier_lite_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_medic_F", "O_engineer_F", "O_Soldier_AT_F", "O_Soldier_AA_F"]] call _withFallback;
+private _orkFallback = if (_orkMen isEqualTo []) then {"O_Soldier_F"} else {_orkMen select 0};
 
 private _orkVehicles = [_eastVehicles, ["ork", "trukk", "truck", "battlewagon", "stompa", "looted", "deff", "kopta", "buggy", "warbike", "dakka", "big gun"]] call _byName;
 private _lightVehicles = [_orkVehicles, ["trukk", "truck", "technical", "transport", "buggy", "warbike", "bike"]] call _byName;
@@ -74,23 +89,23 @@ private _airVehicles = [_orkVehicles, ["deffkopta", "kopta", "air", "plane", "fi
 private _staticVehicles = [_orkVehicles, ["dakka", "big gun", "mortar", "emplacement", "turret", "static"]] call _byName;
 
 // Enemy infantry classes
-opfor_officer = [_enemyMen, ["officer", "commander", "boss", "nob"], "O_officer_F"] call _pick;
-opfor_squad_leader = [_enemyMen, ["leader", "sergeant", "enforcer", "boss", "nob"], "O_Soldier_SL_F"] call _pick;
-opfor_team_leader = [_enemyMen, ["leader", "sergeant", "enforcer", "boss", "nob"], "O_Soldier_TL_F"] call _pick;
-opfor_sentry = [_enemyMen, ["militia", "cultist", "gretchin", "light"], "O_Soldier_lite_F"] call _pick;
-opfor_rifleman = [_enemyMen, ["ork", "boy", "shoota", "slugga"], "O_Soldier_F"] call _pick;
-opfor_rpg = [_enemyMen, ["rokkit", "rocket", "rpg", "missile", "anti tank", "at"], "O_Soldier_LAT_F"] call _pick;
-opfor_grenadier = [_enemyMen, ["grenadier", "grenade"], "O_Soldier_GL_F"] call _pick;
-opfor_machinegunner = [_enemyMen, ["big shoota", "shoota", "dakka", "gunner", "autorifle"], "O_Soldier_AR_F"] call _pick;
-opfor_heavygunner = [_enemyMen, ["heavy", "big shoota", "dakka", "autocannon"], "O_HeavyGunner_F"] call _pick;
-opfor_marksman = [_enemyMen, ["marksman", "sniper"], "O_soldier_M_F"] call _pick;
-opfor_sharpshooter = [_enemyMen, ["sharpshooter", "sniper"], "O_Sharpshooter_F"] call _pick;
-opfor_sniper = [_enemyMen, ["sniper"], "O_sniper_F"] call _pick;
-opfor_at = [_enemyMen, ["melta", "rokkit", "missile", "anti tank", "at"], "O_Soldier_AT_F"] call _pick;
-opfor_aa = [_enemyMen, ["aa", "anti air"], "O_Soldier_AA_F"] call _pick;
-opfor_medic = [_enemyMen, ["medic", "medicae", "painboy"], "O_medic_F"] call _pick;
-opfor_engineer = [_enemyMen, ["engineer", "sapper", "mek"], "O_engineer_F"] call _pick;
-opfor_paratrooper = [_enemyMen, ["stormboy", "jump", "drop"], "O_soldier_PG_F"] call _pick;
+opfor_officer = [_enemyMen, ["officer", "commander", "boss", "nob"], _orkFallback] call _pick;
+opfor_squad_leader = [_enemyMen, ["leader", "sergeant", "enforcer", "boss", "nob"], _orkFallback] call _pick;
+opfor_team_leader = [_enemyMen, ["leader", "sergeant", "enforcer", "boss", "nob"], _orkFallback] call _pick;
+opfor_sentry = [_enemyMen, ["gretchin", "light"], _orkFallback] call _pick;
+opfor_rifleman = [_enemyMen, ["ork", "boy", "shoota", "slugga"], _orkFallback] call _pick;
+opfor_rpg = [_enemyMen, ["rokkit", "rocket", "rpg", "missile", "anti tank", "at"], _orkFallback] call _pick;
+opfor_grenadier = [_enemyMen, ["grenadier", "grenade"], _orkFallback] call _pick;
+opfor_machinegunner = [_enemyMen, ["big shoota", "shoota", "dakka", "gunner", "autorifle"], _orkFallback] call _pick;
+opfor_heavygunner = [_enemyMen, ["heavy", "big shoota", "dakka", "autocannon"], _orkFallback] call _pick;
+opfor_marksman = [_enemyMen, ["marksman", "sniper"], _orkFallback] call _pick;
+opfor_sharpshooter = [_enemyMen, ["sharpshooter", "sniper"], _orkFallback] call _pick;
+opfor_sniper = [_enemyMen, ["sniper"], _orkFallback] call _pick;
+opfor_at = [_enemyMen, ["melta", "rokkit", "missile", "anti tank", "at"], _orkFallback] call _pick;
+opfor_aa = [_enemyMen, ["aa", "anti air"], _orkFallback] call _pick;
+opfor_medic = [_enemyMen, ["medic", "medicae", "painboy"], _orkFallback] call _pick;
+opfor_engineer = [_enemyMen, ["engineer", "sapper", "mek"], _orkFallback] call _pick;
+opfor_paratrooper = [_enemyMen, ["stormboy", "jump", "drop"], _orkFallback] call _pick;
 
 // Enemy vehicles used by secondary objectives.
 opfor_mrap = if (_lightVehicles isEqualTo []) then {"O_MRAP_02_F"} else {_lightVehicles select 0};
