@@ -39,6 +39,8 @@ switch (KPLIB_preset_blufor) do {
     case 28: {[] call compileFinal preprocessFileLineNumbers "PRESETS\BLUFOR\sfp_wdl.sqf";};
     case 29: {[] call compileFinal preprocessFileLineNumbers "PRESETS\BLUFOR\sfp_des.sqf";};
     case 30: {[] call compileFinal preprocessFileLineNumbers "PRESETS\BLUFOR\enoch.sqf";};
+    case 31: {[] call compileFinal preprocessFileLineNumbers "PRESETS\BLUFOR\tiow2.sqf";};
+    case 32: {[] call compileFinal preprocessFileLineNumbers "PRESETS\BLUFOR\tiow2_dark_angels.sqf";};
     default  {[] call compileFinal preprocessFileLineNumbers "PRESETS\BLUFOR\custom.sqf";};
 };
 
@@ -63,6 +65,7 @@ switch (KPLIB_preset_opfor) do {
     case 18: {[] call compileFinal preprocessFileLineNumbers "PRESETS\OPFOR\CUP_CDF.sqf";};
     case 19: {[] call compileFinal preprocessFileLineNumbers "PRESETS\OPFOR\CUP_BAF_Desert.sqf";};
     case 20: {[] call compileFinal preprocessFileLineNumbers "PRESETS\OPFOR\CUP_BAF_Woodland.sqf";};
+    case 21: {[] call compileFinal preprocessFileLineNumbers "PRESETS\OPFOR\tiow2.sqf";};
     default  {[] call compileFinal preprocessFileLineNumbers "PRESETS\OPFOR\custom.sqf";};
 };
 

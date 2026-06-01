@@ -35,6 +35,12 @@ export interface Preset {
     readonly variables: VariablesReplacements;
 
     /**
+     * Optional mission.sqm unit type replacements for builds which need
+     * playable slots to use mod-specific base units.
+     */
+    readonly playerTypes: VariablesReplacements | undefined;
+
+    /**
      * Steam Workshop Id
      */
     readonly workshopId: string;

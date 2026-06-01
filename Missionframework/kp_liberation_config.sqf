@@ -77,6 +77,10 @@ KPLIB_ace_crates = [
 /* - Custom unit and arsenal preset settings.
 If you want to change a preset, it's recommended to set all four presets to 0 and edit the appropriate custom.sqf files in the preset folders.*/
 
+/* TIOW2 setup:
+Use BLUFOR preset 31 for Imperial Guard or 32 for Dark Angels, OPFOR preset 21 for Orks and arsenal preset 17.
+Load CBA_A3, Weapon Eventhandler Framework, There is Only War Mod - Release 5 BETA and TIOW2. */
+
 /* BLUFOR preset:
 0  = Custom (default vanilla with many optional mods supported)
 1  = Apex Tanoa (apex vanilla with many optional mods supported)
@@ -108,7 +112,9 @@ If you want to change a preset, it's recommended to set all four presets to 0 an
 27 = CUP Takistani Army
 28 = SFP (Woodland)
 29 = SFP (Desert)
-30 = LDF (Contact DLC) */
+30 = LDF (Contact DLC)
+31 = TIOW2 Imperial Guard
+32 = TIOW2 Dark Angels */
 KPLIB_preset_blufor = 0;
 
 /* OPFOR preset:
@@ -132,7 +138,8 @@ KPLIB_preset_blufor = 0;
 17 = CUP Armed Forces of the Russian Federation (Modern MSV)
 18 = CUP Chernarus Defense Force
 19 = CUP British Armed Forces (Desert)
-20 = CUP British Armed Forces (Woodland) */
+20 = CUP British Armed Forces (Woodland)
+21 = TIOW2 Orks */
 KPLIB_preset_opfor = 0;
 
 /* Resistance preset:
@@ -175,7 +182,8 @@ KPLIB_preset_civilians = 0;
 13 = CSAT Hex arsenal preset
 14 = CSAT Green Hex arsenal preset
 15 = AAF arsenal preset
-16 = LDF arsenal preset */
+16 = LDF arsenal preset
+17 = TIOW2 arsenal preset */
 KPLIB_arsenal = 0;
 
 /* - Fuel consumption settings.

@@ -16,6 +16,7 @@ switch (KPLIB_arsenal) do {
     case  14: {[] call compileFinal preprocessFileLineNumbers "ARSENAL_PRESETS\vanilla_csat_ghex.sqf";};
     case  15: {[] call compileFinal preprocessFileLineNumbers "ARSENAL_PRESETS\vanilla_aaf.sqf";};
     case  16: {[] call compileFinal preprocessFileLineNumbers "ARSENAL_PRESETS\vanilla_ldf.sqf";};
+    case  17: {[] call compileFinal preprocessFileLineNumbers "ARSENAL_PRESETS\tiow2.sqf";};
     default  {KPLIB_arsenal_weapons = [];KPLIB_arsenal_magazines = [];KPLIB_arsenal_items = [];KPLIB_arsenal_backpacks = [];};
 };
 
