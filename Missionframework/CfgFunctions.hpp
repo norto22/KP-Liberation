@@ -100,4 +100,5 @@ class KPLIB {
     };
     #include "SCRIPTS\CLIENT\CfgFunctions.hpp"
     #include "SCRIPTS\SERVER\CfgFunctions.hpp"
+    #include "KP\LOADOUT_MANAGER\functions.hpp"
 };

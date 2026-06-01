@@ -229,7 +229,6 @@ class CfgDiscordRichPresence {
 
 class CfgFunctions {
     #include "CfgFunctions.hpp"
-    #include "KP\LOADOUT_MANAGER\functions.hpp"
 };
 
 class CfgRespawnTemplates {
@@ -247,4 +246,3 @@ class CfgTaskDescriptions {
 #include "GREUH\UI\GREUH_interface.hpp"
 #include "KP\GUI\defines.hpp"
 #include "KP\LOADOUT_MANAGER\UI\dialog.hpp"
-

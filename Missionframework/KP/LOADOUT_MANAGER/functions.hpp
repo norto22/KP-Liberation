@@ -11,40 +11,38 @@
         Defines for all functions for the KP Player Menu.
 */
 
-class KPLIB {
-    class loadout_manager {
-        file = "KP\LOADOUT_MANAGER\FNC";
+class loadout_manager {
+    file = "KP\LOADOUT_MANAGER\FNC";
 
-        // Apply and save settings
-        class apply {};
+    // Apply and save settings
+    class apply {};
 
-        // Creates a new group
-        class create {};
+    // Creates a new group
+    class create {};
 
-        // Apply view distance and sound volume
-        class getInOut {};
+    // Apply view distance and sound volume
+    class getInOut {};
 
-        // Joins selected group
-        class join {};
+    // Joins selected group
+    class join {};
 
-        // Open the dialog
-        class openDialog {};
+    // Open the dialog
+    class openDialog {};
 
-        // Module post initialization
-        class postInit {};
+    // Module post initialization
+    class postInit {};
 
-        // Module pre initialization
-        class preInit {
-            preInit = 1;
-        };
-
-        // Applies new name to group
-        class rename {};
-
-        // Save dialog settings
-        class save {};
-
-        // Get and display KP Ranks data
-        class showRankData {};
+    // Module pre initialization
+    class preInit {
+        preInit = 1;
     };
+
+    // Applies new name to group
+    class rename {};
+
+    // Save dialog settings
+    class save {};
+
+    // Get and display KP Ranks data
+    class showRankData {};
 };
